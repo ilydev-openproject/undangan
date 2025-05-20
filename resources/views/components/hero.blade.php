@@ -1,6 +1,6 @@
 <div class="h-auto">
     <div class="bg relative h-auto min-h-screen overflow-hidden">
-        <div class="overlay absolute top-0 left-0 h-full w-full z-20 bg-gradient-to-b from-[#795700]/10 to-[#212529]">
+        <div class="overlay absolute top-0 left-0 h-full w-full z-20 bg-gradient-to-b from-[#795700]/10 to-[#1A1A1A]">
         </div>
         <div class="bg-group">
             <img src="{{ asset('image/foto/bg-1.jpeg') }}"
@@ -50,50 +50,46 @@
                 </div>
             </div>
             <div class="savedate mt-8">
-                <p class="font-elsie-s text-[#EEC373] text[20px] font-[300]">Desember, 12<sup>th</sup> 202x</p>
-                <button"
+                <p class="font-elsie-s text-[#EEC373] text-[20px] font-[300]">Desember, 12<sup>th</sup> 2025</p>
+
+                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Rika+%26+Ilyas+Wedding&dates=20251212T090000/20251212T110000&details=Kami+mengundang+Anda+untuk+hadir+di+acara+pernikahan+kami&location=Lokasi+Pernikahan&sf=true&output=xml"
+                    target="_blank"
                     class="bg-[#EEC373] hover:bg-[#B78C3C] py-2 px-4 rounded-3xl flex flex-row justify-center items-center cursor-pointer transition-colors duration-300 mt-4">
-                    <i class="far fa-calendar me-2"></i>
+                    <i class="fas fa-calendar-alt me-2"></i>
                     <span class="font-elsie text-[13px] font-[400] text-[#232323]" style="letter-spacing: 0;">
                         Save the Date
                     </span>
-                    </button>
+                </a>
             </div>
+
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Tanggal dari props komponen
-            const targetDate = new Date("{{ $eventDate ?? '2025-6-22 9:00:00' }}");
+        // Ubah ke tanggal pernikahanmu
+        const weddingDate = new Date("2025-12-12T00:00:00").getTime();
 
-            function updateCountdown() {
-                const now = new Date();
-                const diff = targetDate - now;
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
 
-                // Hitung hari, jam, menit, detik
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                // Update tampilan
-                document.getElementById('days').textContent = days;
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-
-                // Jika waktu sudah habis
-                if (diff < 0) {
-                    clearInterval(countdownTimer);
-                    document.querySelector('.countdown').innerHTML = '<div class="text-[#EEC373] text-lg">Acara telah dimulai!</div>';
-                }
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("days").innerText = "0";
+                document.getElementById("hours").innerText = "0";
+                document.getElementById("minutes").innerText = "0";
+                document.getElementById("seconds").innerText = "0";
+                return;
             }
 
-            // Jalankan pertama kali
-            updateCountdown();
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Update setiap detik
-            const countdownTimer = setInterval(updateCountdown, 1000);
-        });
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+        }, 1000);
     </script>
 </div>

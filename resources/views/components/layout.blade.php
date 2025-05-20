@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         @keyframes fade-1 {
@@ -146,7 +147,33 @@
         .animate-fade-4 {
             animation: fade-4 50s linear infinite;
         }
+
+        .milestone .card,
+        .milestone i,
+        .milestone .line {
+            transition: background-color 0.3s ease, color 0.3s ease, height 0.3s ease;
+        }
+
+        .milestone {
+            position: relative;
+        }
+
+        .milestone i {
+            position: relative;
+            z-index: 10;
+            /* Ensure icons are above the line */
+        }
+
+        .line {
+            position: absolute;
+            width: 2px;
+            background-color: #EEC373;
+            /* Fixed line color */
+            z-index: 0;
+            /* Place line behind icons */
+        }
     </style>
+
 </head>
 
 <body>
@@ -157,8 +184,7 @@
         </main>
         <footer></footer>
     </div>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
-
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 
 </html>
