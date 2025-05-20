@@ -1,0 +1,66 @@
+/* @import url(https://db.onlinewebfonts.com/c/72418d770eabd928e56cb5d22ecbdb6d?family=Batik+Blend+One); */
+@import url("https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps:wght@400;900&family=Elsie:wght@400;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&display=swap");
+@font-face {
+    font-family: Batik Blend One;
+    src: url(../fonts/batik-blend.one.ttf);
+}
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../../node_modules/flowbite";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-batik: "Batik Blend One", sans-serif;
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+    --font-elsie: "Elsie", sans-serif;
+    --font-elsie-s: "Elsie Swash Caps", sans-serif;
+
+    /* animasi */
+    --animate-fade-in-scale: fade-in-scale 2.5s ease-out;
+    @keyframes fade-in-scale {
+        0% {
+            opacity: 0;
+            transform: scale(0);
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0);
+            -ms-transform: scale(0);
+            -o-transform: scale(0);
+        }
+        10% {
+            opacity: 0;
+            transform: scale(0);
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0);
+            -ms-transform: scale(0);
+            -o-transform: scale(0);
+        }
+        80% {
+            opacity: 1;
+            transform: scale(1.5);
+            -webkit-transform: scale(1.5);
+            -moz-transform: scale(1.5);
+            -ms-transform: scale(1.5);
+            -o-transform: scale(1.5);
+        }
+        90% {
+            opacity: 1;
+            transform: scale(0.5);
+            -webkit-transform: scale(0.5);
+            -moz-transform: scale(0.5);
+            -ms-transform: scale(0.5);
+            -o-transform: scale(0.5);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
