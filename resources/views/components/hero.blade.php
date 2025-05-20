@@ -63,37 +63,36 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Tanggal dari props komponen
-            const targetDate = new Date("{{ $eventDate ?? '2025-6-22 9:00:00' }}");
+            const targetDate = new Date("2024-12-25 19:00:00");
+            let countdownTimer = null; // ⬅️ deklarasikan dulu agar tidak error
 
             function updateCountdown() {
                 const now = new Date();
                 const diff = targetDate - now;
 
-                // Hitung hari, jam, menit, detik
+                if (diff < 0) {
+                    clearInterval(countdownTimer); // tidak error lagi karena sudah dideklarasi
+                    document.querySelector('.countdown').innerHTML = '<div class="text-[#EEC373] text-lg">Acara telah dimulai!</div>';
+                    return;
+                }
+
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-                // Update tampilan
                 document.getElementById('days').textContent = days;
                 document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
                 document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
                 document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-
-                // Jika waktu sudah habis
-                if (diff < 0) {
-                    clearInterval(countdownTimer);
-                    document.querySelector('.countdown').innerHTML = '<div class="text-[#EEC373] text-lg">Acara telah dimulai!</div>';
-                }
             }
 
             // Jalankan pertama kali
             updateCountdown();
 
-            // Update setiap detik
-            const countdownTimer = setInterval(updateCountdown, 1000);
+            // Set interval setelah deklarasi
+            countdownTimer = setInterval(updateCountdown, 1000);
         });
     </script>
+
 </div>
