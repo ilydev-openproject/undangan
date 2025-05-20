@@ -63,15 +63,15 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const targetDate = new Date("2024-12-25 19:00:00");
-            let countdownTimer = null; // ⬅️ deklarasikan dulu agar tidak error
+            const targetDate = new Date("{{ $eventDate ?? '2025-6-22 9:00:00' }}");
+            let countdownTimer;
 
             function updateCountdown() {
                 const now = new Date();
                 const diff = targetDate - now;
 
                 if (diff < 0) {
-                    clearInterval(countdownTimer); // tidak error lagi karena sudah dideklarasi
+                    clearInterval(countdownTimer);
                     document.querySelector('.countdown').innerHTML = '<div class="text-[#EEC373] text-lg">Acara telah dimulai!</div>';
                     return;
                 }
@@ -90,7 +90,7 @@
             // Jalankan pertama kali
             updateCountdown();
 
-            // Set interval setelah deklarasi
+            // Update setiap detik
             countdownTimer = setInterval(updateCountdown, 1000);
         });
     </script>
