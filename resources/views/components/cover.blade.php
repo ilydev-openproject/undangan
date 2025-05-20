@@ -12,11 +12,11 @@
     <img src="{{ asset('image/gunungan.png') }}" alt="">
     <h1
         class="font-batik text-[35px] text-[#EEC373] font-[200] animate-fade-in-scale animate-fade-in-scale-delay-[1s] my-2">
-        Rika & Ilyas
+        Rika & ilyas
     </h1>
     <p class="font-elsie text-[#f4dfba] text-[15px] font-[100] mt-2">WE INVITE YOU TO CELEBRATE OUR WEDDING</p>
     <h2 class="font-elsie text-[#F4DFBA] font-[100]">Kepada yth: Bpk/Ibu/Saudara/i</h2>
-    <div class="tamu">
+    <div class="tamu my-4">
         <span class="font-elsie-s text-[#EEC373] text-[20px] font-[200]">Tamu Undangan</span>
     </div>
 
@@ -24,7 +24,7 @@
     <audio x-ref="audioPlayer" src="{{ asset('audio/song.mp3') }}"
         x-init="try { $refs.audioPlayer.volume = 0.5; } catch(e) {}"></audio>
 
-    <div class="open mt-4">
+    <div class="open">
         <button @click="playAudio()"
             class="bg-[#EEC373] hover:bg-[#B78C3C] py-2 px-4 rounded-3xl flex flex-row justify-center items-center cursor-pointer transition-colors duration-300">
             <i class="fas fa-envelope-open me-2"></i>

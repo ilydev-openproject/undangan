@@ -25,6 +25,7 @@
 
     /* animasi */
     --animate-fade-in-scale: fade-in-scale 2.5s ease-out;
+
     @keyframes fade-in-scale {
         0% {
             opacity: 0;
