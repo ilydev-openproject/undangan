@@ -1,6 +1,5 @@
 /* @import url(https://db.onlinewebfonts.com/c/72418d770eabd928e56cb5d22ecbdb6d?family=Batik+Blend+One); */
-@import url("https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps:wght@400;900&family=Elsie:wght@400;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps:wght@400;900&family=Elsie:wght@400;900&family=Gemunu+Libre:wght@200..800&display=swap");
 @font-face {
     font-family: Batik Blend One;
     src: url(../fonts/batik-blend.one.ttf);
@@ -22,6 +21,7 @@
         "Noto Color Emoji";
     --font-elsie: "Elsie", sans-serif;
     --font-elsie-s: "Elsie Swash Caps", sans-serif;
+    --font-atm: "Gemunu Libre", sans-serif;
 
     /* animasi */
     --animate-fade-in-scale: fade-in-scale 2.5s ease-out;

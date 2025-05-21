@@ -1,5 +1,5 @@
 <div class="h-auto">
-    <div class="bg relative h-auto min-h-screen overflow-hidden">
+    <div class="bg relative h-auto overflow-hidden">
         <div class="overlay absolute top-0 left-0 h-full w-full z-20 bg-gradient-to-b from-[#795700]/10 to-[#1A1A1A]">
         </div>
         <div class="bg-group">

@@ -17,7 +17,7 @@
             }
         })
     " x-bind:class="{ 'translate-y-[-100vh]': isOpen }"
-    class="fixed w-screen h-screen bg-[#212020] top-0 left-0 flex flex-col justify-center items-center transition-transform duration-1000 ease-in-out z-50">
+    class="w-screen fixed h-screen bg-[#212020] top-0 left-0 flex flex-col justify-center items-center transition-transform duration-1000 ease-in-out z-50">
     <img src="{{ asset('image/gunungan.png') }}" class="max-w-52" alt="">
     <h1
         class="font-batik text-[35px] text-[#EEC373] font-[200] animate-fade-in-scale animate-fade-in-scale-delay-[1s] my-2">

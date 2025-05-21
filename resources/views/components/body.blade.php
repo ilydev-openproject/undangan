@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="mate">
-            <div class="bride">
+            <div class="bride mb-2">
                 <h2 class="font-elsie-s text-[30px] text-[#EEC373] mb-4">Rika Umami Rahayu S.E.</h2>
                 <p class="font-elsie text-[18px] text-[#F4DFBA]">Putra Pertama dari Keluarga <br>Bapak Sumarjo dan Ibu
                     Nor
@@ -152,7 +152,7 @@
             alt="">
     </div>
     <h3 class="font-elsie-s text-[#eec373] text-[30px]">Love Story</h3>
-    <div class="milestone px-8 h-fit relative">
+    <div class="milestone px-8 h-fit relative overflow-hidden">
         <div class="flex flex-row justify-center items-center my-8 relative">
             <i class="fab fa-gratipay fa-2x text-[#1a1a1a] mx-4 bg-[#1a1a1a]"></i>
             <div class="card text-start px-8 py-4 rounded-3xl" style="background-color: #1a1a1a;">
@@ -181,7 +181,7 @@
         </div>
     </div>
     <div class="gunungankembar relative w-fit h-fit">
-        <img src="{{ asset('image/gunungankembar.png') }}" class="w-full relative -top-24 left-0.5 -translate-x-0.5"
+        <img src="{{ asset('image/gunungankembar.png') }}" class="w-full relative -top-12 left-0.5 -translate-x-0.5"
             alt="">
     </div>
     <script>

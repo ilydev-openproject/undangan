@@ -151,7 +151,7 @@
         .milestone .card,
         .milestone i,
         .milestone .line {
-            transition: background-color 0.3s ease, color 0.3s ease, height 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease, height 0.5s ease;
         }
 
         .milestone {
@@ -173,7 +173,7 @@
             /* Place line behind icons */
         }
     </style>
-
+    @livewireStyles
 </head>
 
 <body>
@@ -185,6 +185,7 @@
         <footer></footer>
     </div>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @livewireScripts
 </body>
 
 </html>
