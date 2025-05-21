@@ -1,16 +1,16 @@
 <div class="bg-[#1A1A1A]">
     <div class="card bg-[#252525] p-4 mx-8 rounded-2xl text-center flex flex-col justify-center items-center">
-        <i class="fas fa-gift fa-4x text-[#EEC373]"></i>
-        <span class="text-[18px] font-elsie text-[#EEC373] my-4">Kirim Hadiah</span>
-        <p class="font-elsie text-[#F4DFBA] text-[15px]">
+        <i class="fas fa-gift fa-4x text-[#EEC373]" data-aos="zoom-in-up"></i>
+        <span class="text-[18px] font-elsie text-[#EEC373] my-4" data-aos="zoom-in-up">Kirim Hadiah</span>
+        <p class="font-elsie text-[#F4DFBA] text-[15px]" data-aos="zoom-in-up">
             Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda
             kasih Anda, Anda dapat memberi kado secara cashless.
         </p>
-        <button class="bg-[#EEC373] px-8 py-2 mt-8 rounded-3xl hover:bg-[#F4DFBA]">
+        <!-- <button class="bg-[#EEC373] px-8 py-2 mt-8 rounded-3xl hover:bg-[#F4DFBA]" data-aos="zoom-in-up">
             <i class="fas fa-gift"></i>
             <span class="text-[16px] font-elsie">Kirim Gift</span>
-        </button>
-        <div class="cashles relative mt-12 w-full h-fit" x-data="{ copied: false }">
+        </button> -->
+        <div class="cashles relative mt-12 w-full h-fit" x-data="{ copied: false }" data-aos="zoom-in-up">
             <div class="card w-full h-full">
                 <img src="{{ asset('image/atm.png') }}" class="object-contain w-full h-full" alt="">
                 <div
@@ -28,14 +28,14 @@
             </div>
         </div>
     </div>
-    <div class="penutup p-8 text-center text-[#F4DFBA] font-elsie">
-        <p>Atas kehadiran dan Doa Restunya kami ucapkan terimakasih.</p>
-        <p class="text-[18px] my-8">Wassalamualaikum Wr. Wb.</p>
-        <p>Kami Yang Berbahagia,<br>Keluarga Besar Kedua Mempelai
+    <div class="penutup p-8 text-center text-[#F4DFBA] font-elsie" data-aos="zoom-in-up">
+        <p data-aos="zoom-in-up">Atas kehadiran dan Doa Restunya kami ucapkan terimakasih.</p>
+        <p class="text-[18px] my-8" data-aos="zoom-in-up">Wassalamualaikum Wr. Wb.</p>
+        <p data-aos="zoom-in-up">Kami Yang Berbahagia,<br>Keluarga Besar Kedua Mempelai
         </p>
-        <h1 class="font-elsie-s text-[35px] text-[#EEC373] font-[200] my-2">Rika & ilyas</h1>
+        <h1 class="font-elsie-s text-[35px] text-[#EEC373] font-[200] my-2" data-aos="zoom-in-up">Rika & ilyas</h1>
     </div>
-    <div class="gunungankembar relative w-fit h-fit">
+    <div class="gunungankembar relative w-fit h-fit" data-aos="zoom-out">
         <img src="{{ asset('image/gunungankembar.png') }}" class="w-full relative -top-24 left-0.5 -translate-x-0.5"
             alt="">
     </div>

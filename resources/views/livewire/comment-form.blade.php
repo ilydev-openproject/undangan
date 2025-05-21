@@ -1,11 +1,12 @@
 <div class="bg-[#1A1A1A] h-fit py-8 px-4 w-full">
     <div class="heading text-center">
-        <h3 class="font-elsie-s text-[#eec373] text-[30px]">Wishes</h3>
-        <p class="text-[#F4DFBA] font-elsie text-[18px] leading-[20px]">Berikan ucapan terbaik<br>untuk kedua mempelai
+        <h3 class="font-elsie-s text-[#eec373] text-[30px]" data-aos="zoom-in-up">Wishes</h3>
+        <p class="text-[#F4DFBA] font-elsie text-[18px] leading-[20px]" data-aos="zoom-in-up">Berikan ucapan
+            terbaik<br>untuk kedua mempelai
         </p>
     </div>
 
-    <form wire:submit.prevent="submit" class="max-w-md mx-auto bg-[#DED9CB] p-4 my-4 rounded-3xl">
+    <form wire:submit.prevent="submit" class="max-w-md mx-auto bg-[#DED9CB] p-4 my-4 rounded-3xl" data-aos="zoom-in-up">
         <div class="heading flex flex-row justify-start items-center text-[#4B2800] py-2">
             <i class="fas fa-comments fa-lg me-2"></i>
             <span>Comment</span>
@@ -39,7 +40,7 @@
             class="text-white bg-[#4B2800] hover:bg-[#4B2800] focus:ring-4 focus:outline-none focus:ring-[#4B2800] font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
     </form>
 
-    <div class="bg-[#DED9CB] p-4 my-4 rounded-3xl space-y-4 max-w-md mx-auto">
+    <div class="bg-[#DED9CB] p-4 my-4 rounded-3xl space-y-4 max-w-md mx-auto" data-aos="zoom-in-up">
         @forelse ($comments as $comment)
             <div class="mb-4 flex flex-row justify-start">
                 <div class="bg-[#1B0E00] w-10 h-10 rounded-full flex flex-row items-center justify-center">

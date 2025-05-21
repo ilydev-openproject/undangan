@@ -1,18 +1,23 @@
 <div class="bg bg-[#1a1a1a] text-center py-4">
     <div class="px-2">
-        <p class="font-elsie text-[18px] text-[#F4DFBA]">Assalamualaikum Wr. Wb.</p>
-        <p class="font-elsie text-[18px] text-[#F4DFBA]">Untuk mengikuti Sunnah Rasul-Mu dalam rangka membentuk
+        <p class="font-elsie text-[18px] text-[#F4DFBA]" data-aos="zoom-in-up">Assalamualaikum
+            Wr. Wb.</p>
+        <p class="font-elsie text-[18px] text-[#F4DFBA]" data-aos="zoom-in-up">Untuk mengikuti
+            Sunnah Rasul-Mu dalam
+            rangka
+            membentuk
             keluarga yang sakinah, mawaddah, warahmah.<br><br>Maka ijinkanlah kami menikahkannya. Ya Allah perkenankan
             kami
             merangkaikan kasih sayang yang kau ciptakan diantara putra-putri kami.</p>
-        <div class="gate flex flex-row justify-center items-center gap-12 px-12 py-12">
-            <div class="border-[#FFCC73] border-4 h-62 rounded-t-full overflow-hidden relative">
+        <div class="gate flex flex-row justify-center items-center gap-12 px-12 py-12" data-aos="zoom-in-up">
+            <div class="border-[#FFCC73] border-4 h-62 rounded-t-full overflow-hidden relative"
+                data-aos="zoom-in-right">
                 <div
                     class="overlay h-full w-full absolute top-0 left-0 bg-gradient-to-b from-[#F4DFBA]/20 to-[#232323]">
                 </div>
                 <img src="{{ asset('image/foto/foto2.png') }}" class="h-full w-auto object-cover" alt="">
             </div>
-            <div class="border-[#FFCC73] border-4 h-62 rounded-t-full overflow-hidden relative">
+            <div class="border-[#FFCC73] border-4 h-62 rounded-t-full overflow-hidden relative" data-aos="zoom-in-left">
                 <div
                     class="overlay h-full w-full absolute top-0 left-0 bg-gradient-to-b from-[#F4DFBA]/20 to-[#232323]">
                 </div>
@@ -21,13 +26,16 @@
         </div>
         <div class="mate">
             <div class="bride mb-2">
-                <h2 class="font-elsie-s text-[30px] text-[#EEC373] mb-4">Rika Umami Rahayu S.E.</h2>
-                <p class="font-elsie text-[18px] text-[#F4DFBA]">Putra Pertama dari Keluarga <br>Bapak Sumarjo dan Ibu
+                <h2 class="font-elsie-s text-[30px] text-[#EEC373] mb-4" data-aos="zoom-in-up">Rika Umami Rahayu S.E.
+                </h2>
+                <p class="font-elsie text-[18px] text-[#F4DFBA]" data-aos="zoom-in-up">Putra Pertama dari Keluarga
+                    <br>Bapak Sumarjo dan Ibu
                     Nor
-                    Istianah</p>
+                    Istianah
+                </p>
                 <a href="https://www.instagram.com/rikaumamirahayu98?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                     class="bg-[#EEC373] py-2 px-4 rounded-3xl flex flex-row justify-center items-center w-fit mx-auto mt-8"
-                    target="_blank">
+                    target="_blank" data-aos="zoom-in-up">
                     <i class="fab fa-instagram"></i>
                     <span class="font-elsie text-[15px]">@rikaumamirahayu98</span>
                 </a>
@@ -38,30 +46,34 @@
                 <div class="flex-grow border-t border-[#EEC373]"></div>
             </div>
             <div class="groom">
-                <h2 class="font-elsie-s text-[30px] text-[#EEC373] mb-4">Ahmad Ilyas Maazib S.Kom.</h2>
-                <p class="font-elsie text-[18px] text-[#F4DFBA]">Putra Pertama dari Keluarga <br>Bapak Romdloni dan
+                <h2 class="font-elsie-s text-[30px] text-[#EEC373] mb-4" data-aos="zoom-in-up">Ahmad Ilyas Maazib S.Kom.
+                </h2>
+                <p class="font-elsie text-[18px] text-[#F4DFBA]" data-aos="zoom-in-up">Putra Pertama dari Keluarga
+                    <br>Bapak Romdloni dan
                     Almh.
-                    Ibu Siti Asmawati</p>
+                    Ibu Siti Asmawati
+                </p>
                 <a href="https://www.instagram.com/piyambaan_/"
                     class="bg-[#EEC373] py-2 px-4 rounded-3xl flex flex-row justify-center items-center w-fit mx-auto mt-8"
-                    target="_blank">
+                    target="_blank" data-aos="zoom-in-up">
                     <i class="fab fa-instagram"></i>
                     <span class="font-elsie text-[15px]">@piyambaan_</span>
                 </a>
             </div>
         </div>
     </div>
-    <div class="gunungankembar relative w-fit h-fit">
+    <div class="gunungankembar relative w-fit h-fit" data-aos="zoom-out">
         <img src="{{ asset('image/gunungankembar.png') }}" class="w-full relative -top-12 left-0.5 -translate-x-0.5"
             alt="">
     </div>
     <div class="px-4">
-        <p class="font-elsie text-[#F4DFBA] text-[17px] capitalize">Dengan memohon rahmat dan ridho Allah Subhanahu Wa
+        <p class="font-elsie text-[#F4DFBA] text-[17px] capitalize" data-aos="zoom-in-up">Dengan memohon rahmat dan
+            ridho Allah Subhanahu Wa
             Ta'ala,
             Kami mengundang Bapak/Ibu/Saudara/i, untuk menghadiri Resepsi Pernikahan kami. yang Insya Allah akan
             dilaksanakan pada :</p>
-        <div class="card-group mt-8">
-            <div class="card bg-[#252525] p-2 mx-2 mb-8 rounded-2xl">
+        <div class="card-group mt-8" data-aos="zoom-in-up">
+            <div class="card bg-[#252525] p-2 mx-2 mb-8 rounded-2xl" data-aos="fade-right">
                 <div class="relative flex items-center py-2 px-16">
                     <div class="flex-grow border-t border-[#EEC373]"></div>
                     <span class="font-elsie text-[18px] uppercase text-[#EEC373] mx-4">Akad Nikah</span>
@@ -89,7 +101,7 @@
                     </a>
                 </div>
             </div>
-            <div class="card bg-[#252525] p-2 mx-2 mb-8 rounded-2xl">
+            <div class="card bg-[#252525] p-2 mx-2 mb-8 rounded-2xl" data-aos="fade-left">
                 <div class="relative flex items-center py-2 px-16">
                     <div class="flex-grow border-t border-[#EEC373]"></div>
                     <span class="font-elsie text-[18px] uppercase text-[#EEC373] mx-4">Acara Resepsi</span>
@@ -117,7 +129,7 @@
                     </a>
                 </div>
             </div>
-            <div class="card bg-[#252525] p-2 mx-2 mb-8 rounded-2xl">
+            <div class="card bg-[#252525] p-2 mx-2 mb-8 rounded-2xl" data-aos="fade-right">
                 <div class="relative flex items-center py-2 px-16">
                     <div class="flex-grow border-t border-[#EEC373]"></div>
                     <span class="font-elsie text-[18px] uppercase text-[#EEC373] mx-4">Ngunduh Mantu</span>
@@ -147,12 +159,12 @@
             </div>
         </div>
     </div>
-    <div class="gunungankembar relative w-fit h-fit">
+    <div class="gunungankembar relative w-fit h-fit" data-aos="zoom-out">
         <img src="{{ asset('image/gunungankembar.png') }}" class="w-full relative -top-24 left-0.5 -translate-x-0.5"
             alt="">
     </div>
-    <h3 class="font-elsie-s text-[#eec373] text-[30px]">Love Story</h3>
-    <div class="milestone px-8 h-fit relative overflow-hidden">
+    <h3 class="font-elsie-s text-[#eec373] text-[30px]" data-aos="zoom-in-up">Love Story</h3>
+    <div class="milestone px-8 h-fit relative overflow-hidden" data-aos="zoom-in-up">
         <div class="flex flex-row justify-center items-center my-8 relative">
             <i class="fab fa-gratipay fa-2x text-[#1a1a1a] mx-4 bg-[#1a1a1a]"></i>
             <div class="card text-start px-8 py-4 rounded-3xl" style="background-color: #1a1a1a;">
@@ -180,7 +192,7 @@
             </div>
         </div>
     </div>
-    <div class="gunungankembar relative w-fit h-fit">
+    <div class="gunungankembar relative w-fit h-fit" data-aos="zoom-out">
         <img src="{{ asset('image/gunungankembar.png') }}" class="w-full relative -top-12 left-0.5 -translate-x-0.5"
             alt="">
     </div>
