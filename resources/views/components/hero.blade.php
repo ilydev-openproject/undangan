@@ -4,8 +4,8 @@
         </div>
         <div class="bg-group">
             @php
-                // Ambil media dari koleksi 'hero' dengan aman
-                $media = $invitation ? $invitation->getMedia('hero') : collect([]);
+                // Ambil media dari koleksi 'hero'
+                $media = $invitation->getMedia('hero');
                 // Gambar default
                 $defaultImages = [
                     asset('image/foto/bg-1.jpeg'),
@@ -16,13 +16,13 @@
                 // Siapkan array untuk 4 gambar
                 $images = [];
                 foreach (range(0, 3) as $index) {
-                    $images[$index] = $media->get($index) ? ($isPreview ? $media[$index]->getUrl('thumb') : $media[$index]->getUrl()) : $defaultImages[$index];
+                    $images[$index] = $media->get($index) ? $media[$index]->getUrl() : $defaultImages[$index];
                 }
             @endphp
             @foreach ($images as $index => $image)
                 <img src="{{ $image }}"
-                    class="absolute top-0 left-0.5 -translate-x-0.5 z-10 h-full w-auto object-cover animate-fade-{{ $index + 1 }} bg{{ $index + 1 }} lazyload"
-                    alt="Background {{ $index + 1 }}" loading="lazy">
+                    class="absolute top-0 left-0.5 -translate-x-0.5 z-10 h-full w-auto object-cover animate-fade-{{ $index + 1 }} bg{{ $index + 1 }}"
+                    alt="Background {{ $index + 1 }}">
             @endforeach
         </div>
         <div class="body relative z-20 flex flex-col justify-center items-center px-2 py-12">
