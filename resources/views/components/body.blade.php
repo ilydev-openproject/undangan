@@ -10,18 +10,29 @@
             kami
             merangkaikan kasih sayang yang kau ciptakan diantara putra-putri kami.</p>
         <div class="gate flex flex-row justify-center items-center gap-12 px-12 py-12" data-aos="zoom-in-up">
+            @php
+                // Ambil media dari koleksi 'bride_image' dan 'groom_image'
+                $brideMedia = $invitation->getFirstMedia('bride_image');
+                $groomMedia = $invitation->getFirstMedia('groom_image');
+                // Gambar default
+                $brideDefault = asset('image/foto/foto2.png');
+                $groomDefault = asset('image/foto/foto1.png');
+                // Tentukan URL gambar
+                $brideImage = $brideMedia ? $brideMedia->getUrl() : $brideDefault;
+                $groomImage = $groomMedia ? $groomMedia->getUrl() : $groomDefault;
+            @endphp
             <div class="border-[#FFCC73] border-4 h-62 rounded-t-full overflow-hidden relative"
                 data-aos="zoom-in-right">
                 <div
                     class="overlay h-full w-full absolute top-0 left-0 bg-gradient-to-b from-[#F4DFBA]/20 to-[#232323]">
                 </div>
-                <img src="{{ asset('image/foto/foto2.png') }}" class="h-full w-auto object-cover" alt="">
+                <img src="{{ $brideImage }}" class="h-full w-auto object-cover" alt="Bride Image">
             </div>
             <div class="border-[#FFCC73] border-4 h-62 rounded-t-full overflow-hidden relative" data-aos="zoom-in-left">
                 <div
                     class="overlay h-full w-full absolute top-0 left-0 bg-gradient-to-b from-[#F4DFBA]/20 to-[#232323]">
                 </div>
-                <img src="{{ asset('image/foto/foto1.png') }}" class="h-full w-auto object-cover" alt="">
+                <img src="{{ $groomImage }}" class="h-full w-auto object-cover" alt="Groom Image">
             </div>
         </div>
         <div class="mate">

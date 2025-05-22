@@ -2,19 +2,25 @@
 
 namespace App\Filament\Pages;
 
-use App\Models\Invitation;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
+use App\Models\Invitation;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Support\Facades\Log;
+use Filament\Forms\Components\Group;
 use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class FormBasic extends Page implements HasForms
 {
@@ -22,9 +28,9 @@ class FormBasic extends Page implements HasForms
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static string $view = 'filament.pages.form-basic';
+    protected static ?string $title = 'Detail Invitation';
 
     public ?array $data = [];
-
     public function mount(): void
     {
         if (!auth()->check()) {
@@ -34,14 +40,18 @@ class FormBasic extends Page implements HasForms
         $user = Auth::user();
         $invitation = $user->invitation;
 
+        if (!$invitation) {
+            Log::warning('No invitation found for user', ['user_id' => $user->id]);
+            $this->form->fill();
+            return;
+        }
         $this->form->fill([
-            'slug' => $invitation->slug ?? '',
-            'groom_name' => $invitation->groom_name ?? '',
-            'bride_name' => $invitation->bride_name ?? '',
-            'event_date' => $invitation->event_date ?? '',
+            'slug' => $invitation->slug,
+            'groom_name' => $invitation->groom_name,
+            'bride_name' => $invitation->bride_name,
+            'event_date' => $invitation->event_date,
         ]);
     }
-
 
     public function form(Form $form): Form
     {
@@ -82,10 +92,11 @@ class FormBasic extends Page implements HasForms
                             ->placeholder('Masukkan nama lengkap mempelai wanita')
                             ->maxLength(100),
                     ])
-                    ->columns(2) // Atur layout form menjadi 2 kolom untuk tampilan lebih rapi
-                    ->collapsible(), // Izinke section bisa diciutkan
+                    ->columns(2)
+                    ->collapsible(),
             ])
-            ->statePath('data');
+            ->statePath('data')
+            ->model(auth()->user()->invitation ?? Invitation::class);
     }
 
     public function submit(): void
@@ -93,24 +104,31 @@ class FormBasic extends Page implements HasForms
         $user = Auth::user();
         $data = $this->form->getState();
 
-        // Update atau buat invitation (HASONE berdasarkan user_id)
-        $user->invitation()->updateOrCreate(
-            ['user_id' => $user->id], // kondisi pencocokan
+        // Simpan data invitation
+        $invitation = $user->invitation()->updateOrCreate(
+            ['user_id' => $user->id],
             [
                 'slug' => $data['slug'],
-                'groom_name' => $data['groom_name'],   // update juga di sini
-                'bride_name' => $data['bride_name'],   // update juga di sini
-                'event_date' => $data['event_date'],   // update juga di sini
-                // kolom lain di tabel invitations kalau ada...
+                'groom_name' => $data['groom_name'],
+                'bride_name' => $data['bride_name'],
+                'event_date' => $data['event_date'],
             ]
         );
 
+        // Simpan media
+        $this->form->model($invitation)->saveRelationships();
         Notification::make()
             ->title('Berhasil!')
             ->body('Data berhasil disimpan.')
             ->success()
             ->send();
+
+        // Refresh form
+        $this->form->fill([
+            'slug' => $invitation->slug,
+            'groom_name' => $invitation->groom_name,
+            'bride_name' => $invitation->bride_name,
+            'event_date' => $invitation->event_date,
+        ]);
     }
-
-
 }

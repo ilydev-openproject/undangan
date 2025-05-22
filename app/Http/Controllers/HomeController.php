@@ -9,12 +9,12 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // Ambil user dari database
-        $user = User::all();
+        $invitation = (object) [
+            'groom_name' => 'Ahmad',
+            'bride_name' => 'Siti',
+            'event_date' => '2025-12-12',
+        ];
 
-        // Event date contoh
-        $eventDate = now()->addDays(30)->format('Y-m-d');
-
-        return view('home', );
+        return view('home', compact('invitation'));
     }
 }
