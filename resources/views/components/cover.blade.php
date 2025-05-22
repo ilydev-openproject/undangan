@@ -26,7 +26,7 @@ $watch('isOpen', value => {
     }
 })" x-bind:class="{ 'translate-y-[-100vh]': isOpen }"
     class="fixed left-0 top-0 z-50 flex h-screen w-screen flex-col items-center justify-center bg-[#212020] transition-transform duration-1000 ease-in-out">
-    <img src="{{ asset('image/gunungan.png') }}" class="max-h-42 w-auto relative" alt="" data-aos="flip-left">
+    <img src="{{ asset('image/gunungan.png') }}" class="max-h-62 w-auto relative" alt="" data-aos="flip-left">
     <h1
         class="font-batik animate-fade-in-scale animate-fade-in-scale-delay-[1s] my-2 text-[35px] font-[200] text-[#EEC373]">
         {{ $invitation->bride_nickname }} & {{ $invitation->groom_nickname }}
