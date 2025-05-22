@@ -173,6 +173,15 @@
             z-index: 0;
             /* Place line behind icons */
         }
+
+        /* html,
+        body {
+            overflow-y: scroll;
+        } */
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
     </style>
     @livewireStyles
 </head>

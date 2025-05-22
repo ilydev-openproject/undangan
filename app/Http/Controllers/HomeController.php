@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $eventDate = '2024-12-25 19:00:00';
+        // Ambil user dari database
+        $user = User::all();
 
-        return view('home', [
-            'eventDate' => $eventDate
-        ]);
+        // Event date contoh
+        $eventDate = now()->addDays(30)->format('Y-m-d');
+
+        return view('home', );
     }
 }

@@ -18,7 +18,9 @@
         </div>
         <div class="body relative z-20 flex flex-col justify-center items-center px-2 py-12">
             <img src="{{ asset('image/gunungan.png') }}" alt="" data-aos="flip-right">
-            <h1 class="font-batik text-[35px] text-[#EEC373] font-[200] my-2" data-aos="zoom-in-up">Rika & ilyas</h1>
+            <h1 class="font-batik text-[35px] text-[#EEC373] font-[200] my-2" data-aos="zoom-in-up">
+                {{ $invitation->bride_name }} & {{ $invitation->groom_name }}
+            </h1>
             <p class="text-[#F4DFBA] font-elsie text-center font-[300] text[15px] capitalize mt-3"
                 data-aos="zoom-in-up">
                 Kami akan menikah,<br>dan kami ingin Anda menjadi bagian dari hari istimewa kami!
@@ -51,9 +53,10 @@
                 </div>
             </div>
             <div class="savedate mt-8">
-                <p class="font-elsie-s text-[#EEC373] text-[20px] font-[300]" data-aos="zoom-in-up">Desember,
-                    12<sup>th</sup> 2025</p>
-
+                <p class="font-elsie-s text-[#EEC373] text-[20px] font-[300]" data-aos="zoom-in-up">
+                    {{ \Carbon\Carbon::parse($invitation->event_date)->translatedFormat('F, j') }}<sup>{{ \Carbon\Carbon::parse($invitation->event_date)->format('S') }}</sup>
+                    {{ \Carbon\Carbon::parse($invitation->event_date)->format('Y') }}
+                </p>
                 <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Rika+%26+Ilyas+Wedding&dates=20251212T090000/20251212T110000&details=Kami+mengundang+Anda+untuk+hadir+di+acara+pernikahan+kami&location=Lokasi+Pernikahan&sf=true&output=xml"
                     target="_blank"
                     class="bg-[#EEC373] hover:bg-[#B78C3C] py-2 px-4 rounded-3xl flex flex-row justify-center items-center cursor-pointer transition-colors duration-300 mt-4"
@@ -67,9 +70,11 @@
 
         </div>
     </div>
+    <div id="event-date" data-event-date="{{ $invitation->event_date }}"></div>
     <script>
-        // Ubah ke tanggal pernikahanmu
-        const weddingDate = new Date("2025-12-12T00:00:00").getTime();
+        const eventDateEl = document.getElementById("event-date");
+        const eventDateStr = eventDateEl.getAttribute("data-event-date") + "T00:00:00";
+        const weddingDate = new Date(eventDateStr).getTime();
 
         const countdown = setInterval(() => {
             const now = new Date().getTime();
@@ -95,4 +100,5 @@
             document.getElementById("seconds").innerText = seconds;
         }, 1000);
     </script>
+
 </div>
