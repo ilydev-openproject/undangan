@@ -41,8 +41,9 @@ class UserResource extends Resource
                     ->password()
                     ->required()
                     ->maxLength(8)
+                    ->revealable()
                     ->dehydrateStateUsing(fn($state) => bcrypt($state))
-                    ->required(fn($record) => !$record->exists),
+                    ->required(fn($record) => !optional($record)->exists),
             ]);
     }
 
