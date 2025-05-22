@@ -35,4 +35,8 @@ class Invitation extends Model implements HasMedia
             ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/gif'])
             ->maxNumberOfFiles(4);
     }
+    public function getMediaModel(): string
+    {
+        return __CLASS__;
+    }
 }
