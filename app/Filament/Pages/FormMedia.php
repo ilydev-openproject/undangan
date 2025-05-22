@@ -99,7 +99,10 @@ class FormMedia extends Page
                                 ->reorderable()
                                 ->afterStateUpdated(function ($state) {
                                     Log::info('Foto field state updated', ['state' => $state]);
-                                }),
+                                })
+                                ->validationMessages([
+                                    'maxFiles' => 'Maksimal 4 foto'
+                                ]),
 
                             SpatieMediaLibraryFileUpload::make('foto_gallery')
                                 ->label('Foto Galery')
@@ -115,7 +118,10 @@ class FormMedia extends Page
                                 ->reorderable()
                                 ->afterStateUpdated(function ($state) {
                                     Log::info('Foto field state updated', ['state' => $state]);
-                                }),
+                                })
+                                ->validationMessages([
+                                    'maxFiles' => 'Maksimal 4 foto'
+                                ]),
                         ])
                             ->columns(2)
                             ->columnSpanFull(),
