@@ -20,8 +20,7 @@ class Invitation extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('hero')
-            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/gif'])
-            ->maxNumberOfFiles(4);
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/gif']);
 
         $this->addMediaCollection('bride_image')
             ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/gif'])
@@ -32,8 +31,6 @@ class Invitation extends Model implements HasMedia
             ->singleFile();
 
         $this->addMediaCollection('foto_gallery')
-            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/gif'])
-            ->maxNumberOfFiles(4);
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/gif']);
     }
-
 }
