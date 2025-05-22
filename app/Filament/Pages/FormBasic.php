@@ -48,8 +48,12 @@ class FormBasic extends Page implements HasForms
         $this->form->fill([
             'slug' => $invitation->slug,
             'groom_name' => $invitation->groom_name,
+            'groom_title' => $invitation->groom_title,
             'bride_name' => $invitation->bride_name,
+            'bride_title' => $invitation->bride_title,
             'event_date' => $invitation->event_date,
+            'groom_nickname' => $invitation->groom_nickname,
+            'bride_nickname' => $invitation->bride_nickname,
         ]);
     }
 
@@ -81,16 +85,45 @@ class FormBasic extends Page implements HasForms
                             ->label('Hari Pernikahan')
                             ->required()
                             ->native(false),
-                        TextInput::make('groom_name')
-                            ->label('Nama Pria')
+                        TextInput::make('groom_nickname')
+                            ->label('Nama Panggilan Pria')
                             ->required()
-                            ->placeholder('Masukkan nama lengkap mempelai pria')
+                            ->placeholder('Masukkan nama panggilan mempelai pria')
                             ->maxLength(100),
-                        TextInput::make('bride_name')
-                            ->label('Nama Wanita')
+                        TextInput::make('bride_nickname')
+                            ->label('Nama Panggilan Wanita')
                             ->required()
-                            ->placeholder('Masukkan nama lengkap mempelai wanita')
+                            ->placeholder('Masukkan nama panggilan mempelai wanita')
                             ->maxLength(100),
+                        Group::make([
+                            TextInput::make('groom_name')
+                                ->label('Nama Lengkap Pria')
+                                ->required()
+                                ->placeholder('Masukkan nama lengkap mempelai pria')
+                                ->maxLength(100)
+                                ->columnSpan(2),
+                            TextInput::make('groom_title')
+                                ->label('Title')
+                                ->placeholder('S.Kom./S.E.')
+                                ->maxLength(100)
+                                ->columnSpan(1),
+                        ])
+                            ->columns(3),
+                        Group::make([
+                            TextInput::make('bride_name')
+                                ->label('Nama Lengkap Wanita')
+                                ->required()
+                                ->placeholder('Masukkan nama lengkap mempelai wanita')
+                                ->maxLength(100)
+                                ->columnSpan(2),
+                            TextInput::make('bride_title')
+                                ->label('Title')
+                                ->placeholder('S.Kom./S.E.')
+                                ->maxLength(100)
+                                ->columnSpan(1),
+                        ])
+                            ->columns(3),
+
                     ])
                     ->columns(2)
                     ->collapsible(),
@@ -109,6 +142,10 @@ class FormBasic extends Page implements HasForms
             ['user_id' => $user->id],
             [
                 'slug' => $data['slug'],
+                'groom_nickname' => $data['groom_nickname'],
+                'groom_title' => $data['groom_title'],
+                'bride_nickname' => $data['bride_nickname'],
+                'bride_title' => $data['bride_title'],
                 'groom_name' => $data['groom_name'],
                 'bride_name' => $data['bride_name'],
                 'event_date' => $data['event_date'],
@@ -126,6 +163,10 @@ class FormBasic extends Page implements HasForms
         // Refresh form
         $this->form->fill([
             'slug' => $invitation->slug,
+            'groom_nickname' => $invitation->groom_nickname,
+            'groom_title' => $invitation->groom_title,
+            'bride_nickname' => $invitation->bride_nickname,
+            'bride_title' => $invitation->bride_title,
             'groom_name' => $invitation->groom_name,
             'bride_name' => $invitation->bride_name,
             'event_date' => $invitation->event_date,

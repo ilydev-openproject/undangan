@@ -34,7 +34,8 @@
         <p data-aos="zoom-in-up">Kami Yang Berbahagia,<br>Keluarga Besar Kedua Mempelai
         </p>
         <h1 class="font-elsie-s text-[35px] text-[#EEC373] font-[200] my-2" data-aos="zoom-in-up">
-            {{ $invitation->bride_name }} & {{ $invitation->groom_name }}</h1>
+            {{ $invitation->bride_nickname }} & {{ $invitation->groom_nickname }}
+        </h1>
     </div>
     <div class="gunungankembar relative w-fit h-fit" data-aos="zoom-out">
         <img src="{{ asset('image/gunungankembar.png') }}" class="w-full relative -top-24 left-0.5 -translate-x-0.5"

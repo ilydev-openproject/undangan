@@ -16,6 +16,10 @@ class Invitation extends Model implements HasMedia
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function invitation()
+    {
+        return $this->hasMany(Invitation::class, 'invitation_id');
+    }
 
     public function registerMediaCollections(): void
     {

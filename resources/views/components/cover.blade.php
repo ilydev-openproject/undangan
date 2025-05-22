@@ -29,7 +29,7 @@ $watch('isOpen', value => {
     <img src="{{ asset('image/gunungan.png') }}" class="max-w-52" alt="" data-aos="flip-left">
     <h1
         class="font-batik animate-fade-in-scale animate-fade-in-scale-delay-[1s] my-2 text-[35px] font-[200] text-[#EEC373]">
-        {{ $invitation->bride_name }} & {{ $invitation->groom_name }}
+        {{ $invitation->bride_nickname }} & {{ $invitation->groom_nickname }}
     </h1>
     <p class="font-elsie mt-2 text-[15px] font-[100] text-[#f4dfba]" data-aos="zoom-in-up">WE INVITE YOU TO CELEBRATE
         OUR WEDDING</p>

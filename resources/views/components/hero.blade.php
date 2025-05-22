@@ -28,7 +28,7 @@
         <div class="body relative z-20 flex flex-col justify-center items-center px-2 py-12">
             <img src="{{ asset('image/gunungan.png') }}" alt="" data-aos="flip-right">
             <h1 class="font-batik text-[35px] text-[#EEC373] font-[200] my-2" data-aos="zoom-in-up">
-                {{ $invitation->bride_name }} & {{ $invitation->groom_name }}
+                {{ $invitation->bride_nickname }} & {{ $invitation->groom_nickname }}
             </h1>
             <p class="text-[#F4DFBA] font-elsie text-center font-[300] text[15px] capitalize mt-3"
                 data-aos="zoom-in-up">
