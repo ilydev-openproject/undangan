@@ -128,7 +128,7 @@
                     data-aos="{{ $index % 2 == 0 ? 'fade-right' : 'fade-left' }}">
                     <div class="relative flex items-center py-2 px-16">
                         <div class="flex-grow border-t border-[#EEC373]"></div>
-                        <span class="font-elsie text-[18px] uppercase text-[#EEC373] mx-4">{{ $e->name }}</span>
+                        <span class="font-elsie text-[18px] uppercase text-[#EEC373] mx-4">{{ $e['name'] }}</span>
                         <div class="flex-grow border-t border-[#EEC373]"></div>
                     </div>
                     <div class="p-4">
