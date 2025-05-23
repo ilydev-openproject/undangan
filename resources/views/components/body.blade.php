@@ -94,7 +94,7 @@
 
             $defaultEvents = collect([
                 [
-                    'title' => 'Akad Nikah',
+                    'name' => 'Akad Nikah',
                     'event_date' => '2023-12-10',
                     'waktu' => '09:00',
                     'end_time' => '11:00',
@@ -102,7 +102,7 @@
                     'location_url' => '',
                 ],
                 [
-                    'title' => 'Acara Resepsi',
+                    'name' => 'Acara Resepsi',
                     'event_date' => '2023-12-10',
                     'waktu' => '10:00',
                     'end_time' => '13:00',
@@ -110,7 +110,7 @@
                     'location_url' => '',
                 ],
                 [
-                    'title' => 'Ngunduh Mantu',
+                    'name' => 'Ngunduh Mantu',
                     'event_date' => '2023-12-11',
                     'waktu' => '10:00',
                     'end_time' => '13:00',
@@ -165,27 +165,6 @@
             alt="">
     </div>
     <h3 class="font-elsie-s text-[#eec373] text-[30px]" data-aos="zoom-in-up">Love Story</h3>
-    @php
-        // Asumsikan $invitation sudah di-passing dari controller
-        $stories = $invitation->story()->orderBy('urutan')->get();
-
-        $defaultStories = collect([
-            [
-                'title' => 'Perkenalan',
-                'cerita' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, nihil?',
-            ],
-            [
-                'title' => 'Khitbah',
-                'cerita' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, nihil?',
-            ],
-            [
-                'title' => 'Resepsi',
-                'cerita' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, nihil?',
-            ],
-        ]);
-
-        $stories = $stories->isEmpty() ? $defaultStories : $stories;
-    @endphp
 
     <div class="milestone px-8 h-fit relative overflow-hidden" data-aos="zoom-in-up">
         @foreach ($stories as $index => $story)
