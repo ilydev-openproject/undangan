@@ -65,6 +65,15 @@ class Invitation extends Model implements HasMedia
 
     public function event()
     {
-        return $this->hasOne(Event::class, 'invitation_id');
+        return $this->hasMany(Event::class, 'invitation_id');
     }
+    public function story()
+    {
+        return $this->hasMany(Story::class, 'invitation_id');
+    }
+    public function rekening()
+    {
+        return $this->hasMany(Rekening::class);
+    }
+
 }

@@ -89,91 +89,75 @@
             Ta'ala,
             Kami mengundang Bapak/Ibu/Saudara/i, untuk menghadiri Resepsi Pernikahan kami. yang Insya Allah akan
             dilaksanakan pada :</p>
+        @php
+            $events = $invitation->event;
+
+            $defaultEvents = collect([
+                [
+                    'title' => 'Akad Nikah',
+                    'event_date' => '2023-12-10',
+                    'waktu' => '09:00',
+                    'end_time' => '11:00',
+                    'location' => 'Rumah Mempelai Wanita - Jl. Lorem Ipsum No. 21',
+                    'location_url' => '',
+                ],
+                [
+                    'title' => 'Acara Resepsi',
+                    'event_date' => '2023-12-10',
+                    'waktu' => '10:00',
+                    'end_time' => '13:00',
+                    'location' => 'Rumah Mempelai Wanita - Jl. Lorem Ipsum No. 21',
+                    'location_url' => '',
+                ],
+                [
+                    'title' => 'Ngunduh Mantu',
+                    'event_date' => '2023-12-11',
+                    'waktu' => '10:00',
+                    'end_time' => '13:00',
+                    'location' => 'Rumah Mempelai Pria - Jl. Lorem Ipsum No. 21',
+                    'location_url' => '',
+                ],
+            ]);
+
+            $events = $events->isEmpty() ? $defaultEvents : $events;
+        @endphp
+
         <div class="card-group mt-8" data-aos="zoom-in-up">
-            <div class="card bg-[#252525] p-2 mx-2 mb-8 rounded-2xl" data-aos="fade-right">
-                <div class="relative flex items-center py-2 px-16">
-                    <div class="flex-grow border-t border-[#EEC373]"></div>
-                    <span class="font-elsie text-[18px] uppercase text-[#EEC373] mx-4">Akad Nikah</span>
-                    <div class="flex-grow border-t border-[#EEC373]"></div>
+            @foreach ($events as $index => $e)
+                <div class="card bg-[#252525] p-2 mx-2 mb-8 rounded-2xl"
+                    data-aos="{{ $index % 2 == 0 ? 'fade-right' : 'fade-left' }}">
+                    <div class="relative flex items-center py-2 px-16">
+                        <div class="flex-grow border-t border-[#EEC373]"></div>
+                        <span class="font-elsie text-[18px] uppercase text-[#EEC373] mx-4">{{ $e->name }}</span>
+                        <div class="flex-grow border-t border-[#EEC373]"></div>
+                    </div>
+                    <div class="p-4">
+                        <div class="day flex flex-row justify-start items-center mb-2">
+                            <i class="fas fa-calendar-alt text-[#EEC373] fa-lg me-4"></i>
+                            <span class="text-[#EEC373] font-elsie text-[18px]">
+                                {{ \Carbon\Carbon::parse($e->event_date)->translatedFormat('l, j F Y') }}
+                            </span>
+                        </div>
+                        <div class="time flex flex-row justify-start items-center mb-2">
+                            <i class="far fa-clock text-[#EEC373] fa-lg me-4"></i>
+                            <span class="text-[#EEC373] font-elsie text-[18px]">
+                                {{ \Carbon\Carbon::parse($e['waktu'])->format('H.i') }} WIB
+                            </span>
+                        </div>
+                        <div class="time flex flex-row justify-start items-center mb-2">
+                            <i class="fas fa-map-marker-alt text-[#EEC373] fa-lg me-4"></i>
+                            <span class="text-[#EEC373] font-elsie text-[18px] text-start">{{ $e['location'] }}</span>
+                        </div>
+                        @if (!empty($e['gmap_link']))
+                            <a href="{{ $e['gmap_link'] }}"
+                                class="flex flex-row justify-center items-center w-fit mx-auto mt-8 bg-[#EEC373] py-2 px-4 rounded-3xl">
+                                <i class="fas fa-map-marker-alt fa-lg me-2"></i>
+                                <span class="font-elsie text-[15px]">Kunjungi lokasi</span>
+                            </a>
+                        @endif
+                    </div>
                 </div>
-                <div class="p-4">
-                    <div class="day w-auto flex flex-row justify-start items-center mb-2">
-                        <i class="fas fa-calendar-alt text-[#EEC373] fa-lg me-4"></i>
-                        <span class="text-[#EEC373] font-elsie text-[18px]">Jum’at, 10 Desember 20xx</span>
-                    </div>
-                    <div class="time w-auto flex flex-row justify-start items-center mb-2">
-                        <i class="far fa-clock text-[#EEC373] fa-lg me-4"></i>
-                        <span class="text-[#EEC373] font-elsie text-[18px]">09.00 – 11 WITA </span>
-                    </div>
-                    <div class="time w-auto flex flex-row justify-start items-center mb-2">
-                        <i class="fas fa-map-marker-alt text-[#EEC373] fa-lg me-4"></i>
-                        <span class="text-[#EEC373] font-elsie text-[18px] text-start">Rumah Mempelai Wanita - Jl. Lorem
-                            Ipsum No. 21
-                        </span>
-                    </div>
-                    <a href=""
-                        class="flex flex-row justify-center items-center w-fit mx-auto mt-8 bg-[#EEC373] py-2 px-4 rounded-3xl">
-                        <i class="fas fa-map-marker-alt fa-lg me-2"></i>
-                        <span class="font-elsie text-[15px]">Kunjungi lokasi</span>
-                    </a>
-                </div>
-            </div>
-            <div class="card bg-[#252525] p-2 mx-2 mb-8 rounded-2xl" data-aos="fade-left">
-                <div class="relative flex items-center py-2 px-16">
-                    <div class="flex-grow border-t border-[#EEC373]"></div>
-                    <span class="font-elsie text-[18px] uppercase text-[#EEC373] mx-4">Acara Resepsi</span>
-                    <div class="flex-grow border-t border-[#EEC373]"></div>
-                </div>
-                <div class="p-4">
-                    <div class="day w-auto flex flex-row justify-start items-center mb-2">
-                        <i class="fas fa-calendar-alt text-[#EEC373] fa-lg me-4"></i>
-                        <span class="text-[#EEC373] font-elsie text-[18px]">Jum’at, 10 Desember 20xx</span>
-                    </div>
-                    <div class="time w-auto flex flex-row justify-start items-center mb-2">
-                        <i class="far fa-clock text-[#EEC373] fa-lg me-4"></i>
-                        <span class="text-[#EEC373] font-elsie text-[18px]">10.00 – 13 WITA </span>
-                    </div>
-                    <div class="time w-auto flex flex-row justify-start items-center mb-2">
-                        <i class="fas fa-map-marker-alt text-[#EEC373] fa-lg me-4"></i>
-                        <span class="text-[#EEC373] font-elsie text-[18px] text-start">Rumah Mempelai Wanita - Jl. Lorem
-                            Ipsum No. 21
-                        </span>
-                    </div>
-                    <a href=""
-                        class="flex flex-row justify-center items-center w-fit mx-auto mt-8 bg-[#EEC373] py-2 px-4 rounded-3xl">
-                        <i class="fas fa-map-marker-alt fa-lg me-2"></i>
-                        <span class="font-elsie text-[15px]">Kunjungi lokasi</span>
-                    </a>
-                </div>
-            </div>
-            <div class="card bg-[#252525] p-2 mx-2 mb-8 rounded-2xl" data-aos="fade-right">
-                <div class="relative flex items-center py-2 px-16">
-                    <div class="flex-grow border-t border-[#EEC373]"></div>
-                    <span class="font-elsie text-[18px] uppercase text-[#EEC373] mx-4">Ngunduh Mantu</span>
-                    <div class="flex-grow border-t border-[#EEC373]"></div>
-                </div>
-                <div class="p-4">
-                    <div class="day w-auto flex flex-row justify-start items-center mb-2">
-                        <i class="fas fa-calendar-alt text-[#EEC373] fa-lg me-4"></i>
-                        <span class="text-[#EEC373] font-elsie text-[18px]">Jum’at, 11 Desember 20xx</span>
-                    </div>
-                    <div class="time w-auto flex flex-row justify-start items-center mb-2">
-                        <i class="far fa-clock text-[#EEC373] fa-lg me-4"></i>
-                        <span class="text-[#EEC373] font-elsie text-[18px]">10.00 – 13 WITA </span>
-                    </div>
-                    <div class="time w-auto flex flex-row justify-start items-center mb-2">
-                        <i class="fas fa-map-marker-alt text-[#EEC373] fa-lg me-4"></i>
-                        <span class="text-[#EEC373] font-elsie text-[18px] text-start">Rumah Mempelai Pria - Jl. Lorem
-                            Ipsum No. 21
-                        </span>
-                    </div>
-                    <a href=""
-                        class="flex flex-row justify-center items-center w-fit mx-auto mt-8 bg-[#EEC373] py-2 px-4 rounded-3xl">
-                        <i class="fas fa-map-marker-alt fa-lg me-2"></i>
-                        <span class="font-elsie text-[15px]">Kunjungi lokasi</span>
-                    </a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
     <div class="gunungankembar relative w-fit h-fit" data-aos="zoom-out">
@@ -181,34 +165,44 @@
             alt="">
     </div>
     <h3 class="font-elsie-s text-[#eec373] text-[30px]" data-aos="zoom-in-up">Love Story</h3>
+    @php
+        // Asumsikan $invitation sudah di-passing dari controller
+        $stories = $invitation->story()->orderBy('urutan')->get();
+
+        $defaultStories = collect([
+            [
+                'title' => 'Perkenalan',
+                'cerita' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, nihil?',
+            ],
+            [
+                'title' => 'Khitbah',
+                'cerita' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, nihil?',
+            ],
+            [
+                'title' => 'Resepsi',
+                'cerita' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, nihil?',
+            ],
+        ]);
+
+        $stories = $stories->isEmpty() ? $defaultStories : $stories;
+    @endphp
+
     <div class="milestone px-8 h-fit relative overflow-hidden" data-aos="zoom-in-up">
-        <div class="flex flex-row justify-center items-center my-8 relative">
-            <i class="fab fa-gratipay fa-2x text-[#1a1a1a] mx-4 bg-[#1a1a1a]"></i>
-            <div class="card text-start px-8 py-4 rounded-3xl" style="background-color: #1a1a1a;">
-                <span class="text-sm font-semibold text-[18px] text-[#1a1a1a]">Perkenalan</span>
-                <p class="text-[14px] mt-4 text-[#1a1a1a]">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Vitae, nihil?</p>
+        @foreach ($stories as $index => $story)
+            <div class="flex flex-row justify-center items-center my-8 relative">
+                <i class="fab fa-gratipay fa-2x text-[#1a1a1a] mx-4 bg-[#1a1a1a]"></i>
+                <div class="card text-start px-8 py-4 rounded-3xl" style="background-color: #1a1a1a;">
+                    <span
+                        class="text-sm font-semibold text-[18px] text-[#1a1a1a]">{{ $story['title'] ?? $story->title }}</span>
+                    <p class="text-[14px] mt-4 text-[#1a1a1a]">{{ $story['cerita'] ?? $story->cerita }}</p>
+                </div>
             </div>
-        </div>
-        <div class="line" style="display: none;"></div>
-        <div class="flex flex-row justify-center items-center my-8 relative">
-            <i class="fab fa-gratipay fa-2x text-[#1a1a1a] mx-4 bg-[#1a1a1a]"></i>
-            <div class="card text-start px-8 py-4 rounded-3xl" style="background-color: #1a1a1a;">
-                <span class="text-sm font-semibold text-[18px] text-[#1a1a1a]">Khitbah</span>
-                <p class="text-[14px] mt-4 text-[#1a1a1a]">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Vitae, nihil?</p>
-            </div>
-        </div>
-        <div class="line" style="display: none;"></div>
-        <div class="flex flex-row justify-center items-center my-8 relative">
-            <i class="fab fa-gratipay fa-2x text-[#1a1a1a] mx-4 bg-[#1a1a1a]"></i>
-            <div class="card text-start px-8 py-4 rounded-3xl" style="background-color: #1a1a1a;">
-                <span class="text-sm font-semibold text-[18px] text-[#1a1a1a]">Khitbah</span>
-                <p class="text-[14px] mt-4 text-[#1a1a1a]">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Vitae, nihil?</p>
-            </div>
-        </div>
+            @if (!$loop->last)
+                <div class="line" style="display: none;"></div>
+            @endif
+        @endforeach
     </div>
+
     <div class="gunungankembar relative w-fit h-fit" data-aos="zoom-out">
         <img src="{{ asset('image/gunungankembar.png') }}" class="w-full relative -top-12 left-0.5 -translate-x-0.5"
             alt="">

@@ -5,6 +5,7 @@ namespace App\Filament\Pages;
 use Filament\Forms;
 use App\Models\Family;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
@@ -233,6 +234,93 @@ class FormBasic extends Page implements HasForms
                             ->deletable()
                             ->reorderable()
                             ->maxItems(4)
+                            ->reorderableWithButtons()
+                            ->columns(8)
+                            ->columnSpanFull()
+                    ])
+                    ->collapsed(),
+                Section::make('Story')
+                    ->description('Ceritakan kisah asmara anda dengan pasangan.')
+                    ->schema([
+                        Repeater::make('cerita')
+                            ->label('Tulis Cerita')
+                            ->relationship('story')
+                            ->schema([
+                                TextInput::make('title')
+                                    ->placeholder('Pertemuan/main kerumah/dijodohkan')
+                                    ->label('Judul')
+                                    ->columnSpan(4),
+                                Select::make('urutan')
+                                    ->placeholder('Pengurutan')
+                                    ->label('Urutan')
+                                    ->options([
+                                        '1' => 'Pertama',
+                                        '2' => 'Kedua',
+                                        '3' => 'Ketiga',
+                                        '4' => 'Keempat',
+                                        '5' => 'Kelima',
+                                        '6' => 'Keenam',
+                                        '7' => 'Ketujuh',
+                                        '8' => 'Kedelapan',
+                                        '9' => 'Kesembilan',
+                                        '10' => 'Kesepuluh',
+                                    ])
+                                    ->native(false)
+                                    ->columnSpan(4),
+                                Textarea::make('cerita')
+                                    ->placeholder('Ceritakan disini')
+                                    ->label('Cerita')
+                                    ->columnSpanFull(),
+                            ])
+                            ->defaultItems(1)
+                            ->deletable()
+                            ->reorderable()
+                            ->maxItems(4)
+                            ->reorderableWithButtons()
+                            ->columns(8)
+                            ->columnSpanFull()
+                    ])
+                    ->collapsed(),
+                Section::make('Rekening')
+                    ->description('Masukkan informasi rekening untuk hadiah digital.')
+                    ->schema([
+                        Repeater::make('rekenings')
+                            ->label('Daftar Rekening')
+                            ->relationship('rekening')
+                            ->schema([
+                                Select::make('role')
+                                    ->label('Untuk Siapa?')
+                                    ->options([
+                                        'bride' => 'Mempelai Wanita',
+                                        'groom' => 'Mempelai Pria',
+                                    ])
+                                    ->required()
+                                    ->native(false)
+                                    ->columnSpan(4),
+                                Select::make('bank_id')
+                                    ->label('Nama Bank')
+                                    ->relationship('bank', 'name')
+                                    ->preload()
+                                    ->native(false)
+                                    ->searchable()
+                                    ->columnSpan(4),
+                                TextInput::make('nama')
+                                    ->label('Nama Pemilik')
+                                    ->placeholder('Nama di rekening')
+                                    ->required()
+                                    ->maxLength(100)
+                                    ->columnSpan(4),
+                                TextInput::make('nomor_rekening')
+                                    ->label('Nomor Rekening')
+                                    ->placeholder('1234567890')
+                                    ->required()
+                                    ->maxLength(100)
+                                    ->columnSpan(4),
+                            ])
+                            ->defaultItems(2)
+                            ->deletable()
+                            ->reorderable()
+                            ->maxItems(6)
                             ->reorderableWithButtons()
                             ->columns(8)
                             ->columnSpanFull()

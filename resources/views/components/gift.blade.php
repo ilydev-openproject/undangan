@@ -10,23 +10,67 @@
             <i class="fas fa-gift"></i>
             <span class="text-[16px] font-elsie">Kirim Gift</span>
         </button> -->
-        <div class="cashles relative mt-12 w-full h-fit" x-data="{ copied: false }" data-aos="zoom-in-up">
-            <div class="card w-full h-full">
-                <img src="{{ asset('image/atm.png') }}" class="object-contain w-full h-full" alt="">
-                <div
-                    class="absolute top-[50%] left-[62%] -translate-x-[50%] -translate-y-[80%] flex flex-col justify-center items-start leading-4 text-[14px]">
-                    <span x-ref="rekening" class="font-[300] font-atm text-white tracking-[2px]">066051050545545</span>
-                    <span class="text-[#D9D9D9] text-shadow-lg font-atm">Rika Umami Rahayu</span>
+        @php
+            $rekeningList = $invitation->rekening;
+
+            $defaultRekening = collect([
+                [
+                    'nama' => 'Nama Mempelai Pria',
+                    'nomor_rekening' => '1234567890',
+                    'bank' => [
+                        'nama' => 'BCA',
+                        'logo_bank' => 'image/bca.png'
+                    ],
+                    'role' => 'groom'
+                ],
+                [
+                    'nama' => 'Nama Mempelai Wanita',
+                    'nomor_rekening' => '0987654321',
+                    'bank' => [
+                        'nama' => 'BRI',
+                        'logo_bank' => 'image/bri.png'
+                    ],
+                    'role' => 'bride'
+                ],
+            ]);
+
+            $rekeningList = $rekeningList->isEmpty() ? $defaultRekening : $rekeningList;
+        @endphp
+
+        @foreach ($rekeningList as $rekening)
+            @php
+                $isArray = is_array($rekening);
+
+                $atasNama = $isArray ? $rekening['nama'] : $rekening->nama;
+                $nomorRekening = $isArray ? $rekening['nomor_rekening'] : $rekening->nomor_rekening;
+                $bankNama = $isArray ? $rekening['bank']['nama'] : optional($rekening->bank)->nama;
+
+                $bankLogo = $isArray
+                    ? asset($rekening['bank']['logo_bank'])
+                    : ($rekening->bank ? $rekening->bank->getFirstMediaUrl('logo_bank') : asset('image/bca.png'));
+            @endphp
+
+            <div class="cashles relative mt-12 w-full h-fit" x-data="{ copied: false }" data-aos="zoom-in-up">
+                <div class="card w-full h-full">
+                    <img src="{{ asset('image/atm.png') }}" class="object-contain w-full h-full" alt="">
+                    <div
+                        class="absolute top-[50%] left-[62%] -translate-x-[50%] -translate-y-[80%] flex flex-col justify-center items-start leading-4 text-[14px]">
+                        <span x-ref="rekening" class="font-[300] font-atm text-white tracking-[2px]">
+                            {{ $nomorRekening }}
+                        </span>
+                        <span class="text-[#D9D9D9] text-shadow-lg font-atm">{{ $atasNama }}</span>
+                    </div>
+                    <img src="{{ $bankLogo }}" class="absolute w-20 h-auto top-2 right-2" alt="{{ $bankNama }}">
+                    <button
+                        @click="navigator.clipboard.writeText($refs.rekening.innerText);copied = true;setTimeout(() => copied = false, 2000);"
+                        class="absolute bottom-2.5 left-2.5 bg-gray-50 hover:bg-gray-300 rounded-lg px-4 py-2 font-sans text-[12px] flex items-center gap-1 cursor-pointer">
+                        <i class="far fa-copy"></i>
+                        <span x-text="copied ? 'Copied' : 'Salin Rekening'"></span>
+                    </button>
                 </div>
-                <img src="{{ asset('image/bca.png') }}" class="absolute w-20 h-auto top-2 right-2" alt="">
-                <button
-                    @click="navigator.clipboard.writeText($refs.rekening.innerText);copied = true;setTimeout(() => copied = false, 2000);"
-                    class="absolute bottom-2.5 left-2.5 bg-gray-50 hover:bg-gray-300 rounded-lg px-4 py-2 font-sans text-[12px] flex items-center gap-1 cursor-pointer">
-                    <i class="far fa-copy"></i>
-                    <span x-text="copied ? 'Copied' : 'Salin Rekening'"></span>
-                </button>
             </div>
-        </div>
+        @endforeach
+
     </div>
     <div class="penutup p-8 text-center text-[#F4DFBA] font-elsie" data-aos="zoom-in-up">
         <p data-aos="zoom-in-up">Atas kehadiran dan Doa Restunya kami ucapkan terimakasih.</p>
