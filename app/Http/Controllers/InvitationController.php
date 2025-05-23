@@ -9,9 +9,12 @@ class InvitationController extends Controller
 {
     public function show($slug)
     {
-        $invitation = Invitation::where('slug', $slug)->firstOrFail();
+        $invitation = Invitation::with(['brideFather', 'brideMother', 'groomFather', 'groomMother'])
+            ->where('slug', $slug)
+            ->firstOrFail();
 
         return view('invitations.show', compact('invitation'));
     }
+
 
 }

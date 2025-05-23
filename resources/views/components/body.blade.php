@@ -37,18 +37,21 @@
         </div>
         <div class="mate">
             <div class="bride mb-2">
-                <h2 class="font-elsie-s text-[30px] text-[#EEC373] mb-4" data-aos="zoom-in-up">Rika Umami Rahayu S.E.
+                <h2 class="font-elsie-s text-[30px] text-[#EEC373] mb-4" data-aos="zoom-in-up">
+                    {{ $invitation->bride_name . ' ' . $invitation->bride_title }}
                 </h2>
-                <p class="font-elsie text-[18px] text-[#F4DFBA]" data-aos="zoom-in-up">Putra Pertama dari Keluarga
-                    <br>Bapak Sumarjo dan Ibu
-                    Nor
-                    Istianah
+                <p class="font-elsie text-[18px] text-[#F4DFBA]" data-aos="zoom-in-up">Putri
+                    {{ $invitation->bride_child_order }} dari Keluarga
+                    <br>Bapak
+                    {{ $invitation->brideFather?->is_deceased ? 'Alm. ' : '' }}{{ $invitation->brideFather?->name ?? '-' }}
+                    dan Ibu
+                    {{ $invitation->brideMother?->is_deceased ? 'Almh. ' : '' }}{{ $invitation->brideMother?->name ?? '-' }}
                 </p>
-                <a href="https://www.instagram.com/rikaumamirahayu98?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                <a href="{{ $invitation->bride_link }}"
                     class="bg-[#EEC373] py-2 px-4 rounded-3xl flex flex-row justify-center items-center w-fit mx-auto mt-8"
                     target="_blank" data-aos="zoom-in-up">
-                    <i class="fab fa-instagram"></i>
-                    <span class="font-elsie text-[15px]">@rikaumamirahayu98</span>
+                    <i class="fab fa-instagram me-1"></i>
+                    <span class="font-elsie text-[15px]">{{"@" . $invitation->bride_ig_username }}</span>
                 </a>
             </div>
             <div class="relative flex items-center py-2 px-16">
@@ -57,18 +60,21 @@
                 <div class="flex-grow border-t border-[#EEC373]"></div>
             </div>
             <div class="groom">
-                <h2 class="font-elsie-s text-[30px] text-[#EEC373] mb-4" data-aos="zoom-in-up">Ahmad Ilyas Maazib S.Kom.
+                <h2 class="font-elsie-s text-[30px] text-[#EEC373] mb-4" data-aos="zoom-in-up">
+                    {{ $invitation->groom_name . ' ' . $invitation->groom_title }}
                 </h2>
-                <p class="font-elsie text-[18px] text-[#F4DFBA]" data-aos="zoom-in-up">Putra Pertama dari Keluarga
-                    <br>Bapak Romdloni dan
-                    Almh.
-                    Ibu Siti Asmawati
+                <p class="font-elsie text-[18px] text-[#F4DFBA]" data-aos="zoom-in-up">Putra
+                    {{ $invitation->groom_child_order }} dari Keluarga
+                    <br>Bapak
+                    {{ $invitation->groomFather?->is_deceased ? 'Alm. ' : '' }}{{ $invitation->groomFather?->name ?? '-' }}
+                    dan Ibu
+                    {{ $invitation->groomMother?->is_deceased ? 'Almh. ' : '' }}{{ $invitation->groomMother?->name ?? '-' }}
                 </p>
-                <a href="https://www.instagram.com/piyambaan_/"
+                <a href="{{ $invitation->groom_link }}"
                     class="bg-[#EEC373] py-2 px-4 rounded-3xl flex flex-row justify-center items-center w-fit mx-auto mt-8"
                     target="_blank" data-aos="zoom-in-up">
-                    <i class="fab fa-instagram"></i>
-                    <span class="font-elsie text-[15px]">@piyambaan_</span>
+                    <i class="fab fa-instagram me-1"></i>
+                    <span class="font-elsie text-[15px]">{{"@" . $invitation->groom_ig_username }}</span>
                 </a>
             </div>
         </div>

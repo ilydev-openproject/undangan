@@ -37,4 +37,34 @@ class Invitation extends Model implements HasMedia
         $this->addMediaCollection('foto_gallery')
             ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/gif']);
     }
+
+    public function family()
+    {
+        return $this->hasOne(Family::class, 'invitation_id');
+    }
+
+    public function brideFather()
+    {
+        return $this->hasOne(Family::class, 'invitation_id')->where('role', 'bride_father');
+    }
+
+    public function brideMother()
+    {
+        return $this->hasOne(Family::class, 'invitation_id')->where('role', 'bride_mother');
+    }
+
+    public function groomFather()
+    {
+        return $this->hasOne(Family::class, 'invitation_id')->where('role', 'groom_father');
+    }
+
+    public function groomMother()
+    {
+        return $this->hasOne(Family::class, 'invitation_id')->where('role', 'groom_mother');
+    }
+
+    public function event()
+    {
+        return $this->hasOne(Event::class, 'invitation_id');
+    }
 }

@@ -3,6 +3,9 @@
 namespace App\Filament\Pages;
 
 use Filament\Forms;
+use App\Models\Family;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
 use App\Models\Invitation;
@@ -12,8 +15,11 @@ use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Support\Facades\Log;
 use Filament\Forms\Components\Group;
 use Illuminate\Support\Facades\Auth;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Forms\Components\DatePicker;
@@ -53,7 +59,13 @@ class FormBasic extends Page implements HasForms
             'bride_title' => $invitation->bride_title,
             'event_date' => $invitation->event_date,
             'groom_nickname' => $invitation->groom_nickname,
+            'groom_child_order' => $invitation->groom_child_order,
+            'groom_ig_username' => $invitation->groom_ig_username,
+            'groom_link' => $invitation->groom_link,
             'bride_nickname' => $invitation->bride_nickname,
+            'bride_child_order' => $invitation->bride_child_order,
+            'bride_ig_username' => $invitation->bride_ig_username,
+            'bride_link' => $invitation->bride_link,
         ]);
     }
 
@@ -61,7 +73,7 @@ class FormBasic extends Page implements HasForms
     {
         return $form
             ->schema([
-                Section::make('Detail Undangan')
+                Section::make('Informasi Dasar')
                     ->description('Masukkan informasi dasar untuk undangan Anda.')
                     ->schema([
                         TextInput::make('slug')
@@ -103,10 +115,23 @@ class FormBasic extends Page implements HasForms
                                 ->maxLength(100)
                                 ->columnSpan(2),
                             TextInput::make('groom_title')
-                                ->label('Title')
+                                ->label('Titel')
                                 ->placeholder('S.Kom./S.E.')
                                 ->maxLength(100)
                                 ->columnSpan(1),
+                            TextInput::make('groom_ig_username')
+                                ->label('Username Ig')
+                                ->prefixIcon('heroicon-o-at-symbol')
+                                ->columnSpan(4),
+                            TextInput::make('groom_link')
+                                ->label('Link Profile Ig')
+                                ->prefix('https://')
+                                ->columnSpan(4),
+                            TextInput::make('groom_child_order')
+                                ->label('Putra ke?')
+                                ->placeholder('Pertama, Kedua, Ketiga')
+                                ->maxLength(100)
+                                ->columnSpan(4),
                         ])
                             ->columns(3),
                         Group::make([
@@ -117,16 +142,104 @@ class FormBasic extends Page implements HasForms
                                 ->maxLength(100)
                                 ->columnSpan(2),
                             TextInput::make('bride_title')
-                                ->label('Title')
+                                ->label('Titel')
                                 ->placeholder('S.Kom./S.E.')
                                 ->maxLength(100)
                                 ->columnSpan(1),
+                            TextInput::make('bride_ig_username')
+                                ->label('Username Ig')
+                                ->prefixIcon('heroicon-o-at-symbol')
+                                ->columnSpan(4),
+                            TextInput::make('bride_link')
+                                ->label('Link Profile Ig')
+                                ->prefix('https://')
+                                ->columnSpan(4),
+                            TextInput::make('bride_child_order')
+                                ->label('Putri ke?')
+                                ->placeholder('Pertama, Kedua, Ketiga')
+                                ->maxLength(100)
+                                ->columnSpan(4),
                         ])
                             ->columns(3),
-
                     ])
                     ->columns(2)
                     ->collapsible(),
+                Section::make('Keluarga')
+                    ->description('Masukkan semua data keluarga anda.')
+                    ->schema([
+                        Repeater::make('family')
+                            ->label('Masukkan Keluarga')
+                            ->relationship('family')
+                            ->schema([
+                                TextInput::make('name')
+                                    ->label('Nama')
+                                    ->columnSpan(3),
+                                TextInput::make('title')
+                                    ->label('Titel')
+                                    ->columnSpan(2),
+                                Select::make('role')
+                                    ->label('Keluarga')
+                                    ->options([
+                                        'bride_mother' => 'Ibu Mempelai Wanita',
+                                        'groom_mother' => 'Ibu Mempelai Pria',
+                                        'bride_father' => 'Ayah Mempelai Wanita',
+                                        'groom_father' => 'Ayah Mempelai Pria',
+                                    ])
+                                    ->native(false)
+                                    ->required()
+                                    ->columnSpan(3),
+                                Toggle::make('is_deceased')
+                                    ->label('sudah menginggal?')
+                                    ->columnSpanFull()
+                                    ->inline(false)
+                                    ->extraAttributes(['class' => 'w-full max-w-xs'])
+                            ])
+                            ->defaultItems(3)
+                            ->deletable()
+                            ->reorderable()
+                            ->maxItems(4)
+                            ->reorderableWithButtons()
+                            ->columns(8)
+                            ->columnSpanFull()
+                    ])
+                    ->collapsed(),
+                Section::make('Acara')
+                    ->description('Masukkan semua data acara anda.')
+                    ->schema([
+                        Repeater::make('acara')
+                            ->label('Masukkan Acara')
+                            ->relationship('event')
+                            ->schema([
+                                TextInput::make('name')
+                                    ->placeholder('Akad Nikah/Resepsi/Ngunduh Mantu')
+                                    ->label('Nama')
+                                    ->columnSpan(3),
+                                DatePicker::make('event_date')
+                                    ->label('Tanggal Acara')
+                                    ->native(false)
+                                    ->columnSpan(3),
+                                TimePicker::make('waktu')
+                                    ->label('Waktu')
+                                    ->native(false)
+                                    ->columnSpan(2),
+                                TextInput::make('location')
+                                    ->label('Lokasi')
+                                    ->placeholder('Jl. ninuninu, kp. durian runtuh')
+                                    ->columnSpan(4),
+                                TextInput::make('gmap_link')
+                                    ->label('Link Google Maps')
+                                    ->prefix('https://')
+                                    ->columnSpan(4)
+                            ])
+                            ->defaultItems(1)
+                            ->deletable()
+                            ->reorderable()
+                            ->maxItems(4)
+                            ->reorderableWithButtons()
+                            ->columns(8)
+                            ->columnSpanFull()
+                    ])
+                    ->collapsed(),
             ])
             ->statePath('data')
             ->model(auth()->user()->invitation ?? Invitation::class);
@@ -147,7 +260,13 @@ class FormBasic extends Page implements HasForms
                 'bride_nickname' => $data['bride_nickname'],
                 'bride_title' => $data['bride_title'],
                 'groom_name' => $data['groom_name'],
+                'groom_child_order' => $data['groom_child_order'],
+                'groom_ig_username' => $data['groom_ig_username'],
+                'groom_link' => $data['groom_link'],
                 'bride_name' => $data['bride_name'],
+                'bride_child_order' => $data['bride_child_order'],
+                'bride_ig_username' => $data['bride_ig_username'],
+                'bride_link' => $data['bride_link'],
                 'event_date' => $data['event_date'],
             ]
         );
@@ -168,7 +287,13 @@ class FormBasic extends Page implements HasForms
             'bride_nickname' => $invitation->bride_nickname,
             'bride_title' => $invitation->bride_title,
             'groom_name' => $invitation->groom_name,
+            'groom_child_order' => $invitation->groom_child_order,
+            'groom_ig_username' => $invitation->groom_ig_username,
+            'groom_link' => $invitation->groom_link,
             'bride_name' => $invitation->bride_name,
+            'bride_child_order' => $invitation->bride_child_order,
+            'bride_ig_username' => $invitation->bride_ig_username,
+            'bride_link' => $invitation->bride_link,
             'event_date' => $invitation->event_date,
         ]);
     }
