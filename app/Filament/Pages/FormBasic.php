@@ -191,8 +191,6 @@ class FormBasic extends Page implements HasForms
                                 Toggle::make('is_deceased')
                                     ->label('sudah menginggal?')
                                     ->columnSpanFull()
-                                    ->inline(false)
-                                    ->extraAttributes(['class' => 'w-full max-w-xs'])
                             ])
                             ->defaultItems(3)
                             ->deletable()
