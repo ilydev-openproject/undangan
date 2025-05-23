@@ -135,7 +135,7 @@
                         <div class="day flex flex-row justify-start items-center mb-2">
                             <i class="fas fa-calendar-alt text-[#EEC373] fa-lg me-4"></i>
                             <span class="text-[#EEC373] font-elsie text-[18px]">
-                                {{ \Carbon\Carbon::parse($e->event_date)->translatedFormat('l, j F Y') }}
+                                {{ \Carbon\Carbon::parse($e['event_date'])->translatedFormat('l, j F Y') }}
                             </span>
                         </div>
                         <div class="time flex flex-row justify-start items-center mb-2">
