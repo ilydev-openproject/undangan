@@ -166,6 +166,28 @@
     </div>
     <h3 class="font-elsie-s text-[#eec373] text-[30px]" data-aos="zoom-in-up">Love Story</h3>
 
+    @php
+        // Asumsikan $invitation sudah di-passing dari controller
+        $stories = $invitation->story()->orderBy('urutan')->get();
+
+        $defaultStories = collect([
+            [
+                'title' => 'Perkenalan',
+                'cerita' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, nihil?',
+            ],
+            [
+                'title' => 'Khitbah',
+                'cerita' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, nihil?',
+            ],
+            [
+                'title' => 'Resepsi',
+                'cerita' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, nihil?',
+            ],
+        ]);
+
+        $stories = $stories->isEmpty() ? $defaultStories : $stories;
+    @endphp
+
     <div class="milestone px-8 h-fit relative overflow-hidden" data-aos="zoom-in-up">
         @foreach ($stories as $index => $story)
             <div class="flex flex-row justify-center items-center my-8 relative">
@@ -181,6 +203,7 @@
             @endif
         @endforeach
     </div>
+
 
     <div class="gunungankembar relative w-fit h-fit" data-aos="zoom-out">
         <img src="{{ asset('image/gunungankembar.png') }}" class="w-full relative -top-12 left-0.5 -translate-x-0.5"
