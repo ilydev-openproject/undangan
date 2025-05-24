@@ -60,6 +60,19 @@ class FormMedia extends Page
                 Section::make('Detail Undangan')
                     ->description('Masukkan informasi dasar untuk undangan Anda.')
                     ->schema([
+                        SpatieMediaLibraryFileUpload::make('cover_image')
+                            ->label('Cover Undangan')
+                            ->collection('cover_image')
+                            ->disk('foto')
+                            ->image()
+                            ->imageEditor()
+                            ->imagePreviewHeight('100')
+                            ->downloadable()
+                            ->lazy()
+                            ->afterStateUpdated(function ($state) {
+                                Log::info('Foto field state updated', ['state' => $state]);
+                            })
+                            ->columnSpanFull(),
                         SpatieMediaLibraryFileUpload::make('foto_bride')
                             ->label('Foto Wanita')
                             ->collection('bride_image')

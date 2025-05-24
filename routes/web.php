@@ -12,6 +12,8 @@ Route::domain('undangan.test')->group(function () {
 // Route untuk subdomain
 Route::get('/{slug}', [InvitationController::class, 'show'])
     ->name('invitation.show');
-Route::get('/{slug}/kepada/{guestSlug?}', [InvitationController::class, 'show'])
-    ->name('invitation.show');
+
+Route::get('/{slug}/kepada/{guest}', [InvitationController::class, 'showWithGuest'])
+    ->name('invitation.show.withGuest');
+
 

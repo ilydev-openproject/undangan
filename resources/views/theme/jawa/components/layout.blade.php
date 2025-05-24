@@ -11,6 +11,24 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title"
+        content="{{ $invitation->bride_name }} & {{ $invitation->groom_name }} - Undangan Pernikahan">
+    <meta property="og:description"
+        content="Kami mengundang Anda untuk menghadiri acara pernikahan kami. Klik untuk melihat detail lengkapnya.">
+    <meta property="og:image" content="{{ $invitation->getFirstMediaUrl('cover_image') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="id_ID">
+
+    <!-- Twitter Card (optional but good for WA/Telegram too) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title"
+        content="{{ $invitation->bride_name }} & {{ $invitation->groom_name }} - Undangan Pernikahan">
+    <meta name="twitter:description"
+        content="Kami mengundang Anda untuk hadir di hari bahagia kami. Klik undangan ini.">
+    <meta name="twitter:image" content="{{ $invitation->getFirstMediaUrl('cover_image') }}">
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         @keyframes fade-1 {

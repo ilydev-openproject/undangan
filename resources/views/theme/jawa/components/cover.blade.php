@@ -34,9 +34,14 @@ $watch('isOpen', value => {
     <p class="font-elsie mt-2 text-[15px] font-[100] text-[#f4dfba]" data-aos="zoom-in-up">WE INVITE YOU TO CELEBRATE
         OUR WEDDING</p>
     <h2 class="font-elsie font-[100] text-[#F4DFBA]" data-aos="zoom-in-up">Kepada yth: Bpk/Ibu/Saudara/i</h2>
-    <div class="tamu my-4" data-aos="fade-up">
-        <span class="font-elsie-s text-[20px] font-[200] text-[#EEC373]">Tamu Undangan</span>
-    </div>
+    @if ($guestName)
+        <div class="tamu my-4" data-aos="fade-up">
+            <span class="font-elsie-s text-[20px] font-[200] text-[#EEC373]">{{ $guestName }}</span>
+        </div>
+    @endif
+
+
+
 
     <!-- Elemen Audio -->
     <audio x-ref="audioPlayer" src="{{ asset('audio/song.mp3') }}"

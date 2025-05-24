@@ -40,7 +40,7 @@ class Invitation extends Model implements HasMedia
 
     public function family()
     {
-        return $this->hasOne(Family::class, 'invitation_id');
+        return $this->hasMany(Family::class, 'invitation_id');
     }
 
     public function brideFather()
@@ -74,6 +74,10 @@ class Invitation extends Model implements HasMedia
     public function rekening()
     {
         return $this->hasMany(Rekening::class);
+    }
+    public function guest()
+    {
+        return $this->hasMany(Guest::class);
     }
 
 }
