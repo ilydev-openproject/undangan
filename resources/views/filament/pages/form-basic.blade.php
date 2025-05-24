@@ -51,7 +51,7 @@
                 @endphp
 
                 @if ($invitation && $invitation->slug)
-                    <a href="{{ config('app.url') . '/invitation/' . $invitation->slug }}" target="_blank"
+                    <a href="{{ $invitation->slug . config('app.url') . '/invitation/'  }}" target="_blank"
                         class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-700 flex flex-row justify-center items-center font-semibold text-sm gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
