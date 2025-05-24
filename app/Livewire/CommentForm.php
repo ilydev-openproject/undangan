@@ -42,7 +42,7 @@ class CommentForm extends Component
 
     public function render()
     {
-        return view('livewire.comment-form', [ // <= PASTIKAN path ini sesuai Blade-nya
+        return view('theme.jawa.livewire.comment-form', [ // <= PASTIKAN path ini sesuai Blade-nya
             'comments' => $this->comments,
         ]);
     }

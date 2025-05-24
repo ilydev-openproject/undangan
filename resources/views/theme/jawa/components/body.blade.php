@@ -11,15 +11,19 @@
             merangkaikan kasih sayang yang kau ciptakan diantara putra-putri kami.</p>
         <div class="gate flex flex-row justify-center items-center gap-12 px-12 py-12" data-aos="zoom-in-up">
             @php
-                // Ambil media dari koleksi 'bride_image' dan 'groom_image'
-                $brideMedia = $invitation->getFirstMedia('bride_image');
-                $groomMedia = $invitation->getFirstMedia('groom_image');
-                // Gambar default
                 $brideDefault = asset('image/foto/foto2.png');
                 $groomDefault = asset('image/foto/foto1.png');
-                // Tentukan URL gambar
-                $brideImage = $brideMedia ? $brideMedia->getUrl() : $brideDefault;
-                $groomImage = $groomMedia ? $groomMedia->getUrl() : $groomDefault;
+
+                if (method_exists($invitation, 'getFirstMedia')) {
+                    $brideMedia = $invitation->getFirstMedia('bride_image');
+                    $groomMedia = $invitation->getFirstMedia('groom_image');
+
+                    $brideImage = $brideMedia ? $brideMedia->getUrl() : $brideDefault;
+                    $groomImage = $groomMedia ? $groomMedia->getUrl() : $groomDefault;
+                } else {
+                    $brideImage = $brideDefault;
+                    $groomImage = $groomDefault;
+                }
             @endphp
             <div class="border-[#FFCC73] border-4 h-62 rounded-t-full overflow-hidden relative"
                 data-aos="zoom-in-right">

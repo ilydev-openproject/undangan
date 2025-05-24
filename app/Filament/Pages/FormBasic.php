@@ -114,12 +114,12 @@ class FormBasic extends Page implements HasForms
                                 ->required()
                                 ->placeholder('Masukkan nama lengkap mempelai pria')
                                 ->maxLength(100)
-                                ->columnSpan(2),
+                                ->columnSpan(4),
                             TextInput::make('groom_title')
                                 ->label('Titel')
                                 ->placeholder('S.Kom./S.E.')
                                 ->maxLength(100)
-                                ->columnSpan(1),
+                                ->columnSpan(4),
                             TextInput::make('groom_ig_username')
                                 ->label('Username Ig')
                                 ->prefixIcon('heroicon-o-at-symbol')
@@ -134,19 +134,19 @@ class FormBasic extends Page implements HasForms
                                 ->maxLength(100)
                                 ->columnSpan(4),
                         ])
-                            ->columns(3),
+                            ->columns(4),
                         Group::make([
                             TextInput::make('bride_name')
                                 ->label('Nama Lengkap Wanita')
                                 ->required()
                                 ->placeholder('Masukkan nama lengkap mempelai wanita')
                                 ->maxLength(100)
-                                ->columnSpan(2),
+                                ->columnSpan(4),
                             TextInput::make('bride_title')
                                 ->label('Titel')
                                 ->placeholder('S.Kom./S.E.')
                                 ->maxLength(100)
-                                ->columnSpan(1),
+                                ->columnSpan(4),
                             TextInput::make('bride_ig_username')
                                 ->label('Username Ig')
                                 ->prefixIcon('heroicon-o-at-symbol')

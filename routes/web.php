@@ -4,5 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvitationController;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/invitation/{slug}', [InvitationController::class, 'show'])->name('invitation.show');
+// Route untuk domain utama (tanpa subdomain)
+Route::domain('undangan.test')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+});
+
+// Route untuk subdomain
+Route::domain('{slug}.undangan.test')->group(function () {
+    Route::get('/{guestSlug?}', [InvitationController::class, 'show'])->name('invitation.show');
+});
+

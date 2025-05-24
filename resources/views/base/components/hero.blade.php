@@ -4,21 +4,26 @@
         </div>
         <div class="bg-group">
             @php
-                // Ambil media dari koleksi 'hero'
-                $media = $invitation->getMedia('hero');
-                // Gambar default
                 $defaultImages = [
                     asset('image/foto/bg-1.jpeg'),
                     asset('image/foto/bg-2.jpeg'),
                     asset('image/foto/bg-3.jpeg'),
                     asset('image/foto/bg-4.jpeg'),
                 ];
-                // Siapkan array untuk 4 gambar
+
                 $images = [];
-                foreach (range(0, 3) as $index) {
-                    $images[$index] = $media->get($index) ? $media[$index]->getUrl() : $defaultImages[$index];
+
+                if (method_exists($invitation, 'getMedia')) {
+                    $media = $invitation->getMedia('hero');
+
+                    foreach (range(0, 3) as $index) {
+                        $images[$index] = $media->get($index) ? $media[$index]->getUrl() : $defaultImages[$index];
+                    }
+                } else {
+                    $images = $defaultImages;
                 }
             @endphp
+
             @foreach ($images as $index => $image)
                 <img src="{{ $image }}"
                     class="absolute top-0 left-0.5 -translate-x-0.5 z-10 h-full w-auto object-cover animate-fade-{{ $index + 1 }} bg{{ $index + 1 }}"

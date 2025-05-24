@@ -13,7 +13,7 @@ class InvitationController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
-        return view('invitations.show', compact('invitation'));
+        return view('theme.jawa.invitations.show', compact('invitation'));
     }
 
 }

@@ -11,7 +11,9 @@ class HomeController extends Controller
     {
         $invitation = (object) [
             'groom_name' => 'Ahmad',
+            'groom_nickname' => 'Ahmad',
             'bride_name' => 'Siti',
+            'bride_nickname' => 'Siti',
             'event_date' => '2025-12-12',
         ];
 
