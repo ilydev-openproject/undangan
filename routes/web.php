@@ -10,6 +10,6 @@ Route::domain('undangan.test')->group(function () {
 });
 
 // Route untuk subdomain
-Route::get('/{slug}/kepada/{guestSlug?}', [InvitationController::class, 'show'])
+Route::get('/{slug}/kepada?/{guestSlug?}', [InvitationController::class, 'show'])
     ->name('invitation.show');
 
