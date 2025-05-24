@@ -17,6 +17,6 @@ class HomeController extends Controller
             'event_date' => '2025-12-12',
         ];
 
-        return view('home', compact('invitation'));
+        return view('base.home', compact('invitation'));
     }
 }
