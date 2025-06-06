@@ -36,7 +36,7 @@ $watch('isOpen', value => {
     <h2 class="font-elsie font-[100] text-[#F4DFBA]" data-aos="zoom-in-up">Kepada yth: Bpk/Ibu/Saudara/i</h2>
     @if ($guestName)
         <div class="tamu my-4" data-aos="fade-up">
-            <span class="font-elsie-s text-[20px] font-[200] text-[#EEC373]">{{ $guestName }}</span>
+            <span class="font-elsie-s text-[20px] font-[200] text-[#EEC373]">{{ ucwords($guestName) }}</span>
         </div>
     @endif
 
