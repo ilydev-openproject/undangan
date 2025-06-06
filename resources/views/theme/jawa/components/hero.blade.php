@@ -66,13 +66,37 @@
                     <p class="text-xs md:text-sm text-[#EEC373]/80 font-elsie">Detik</p>
                 </div>
             </div>
+            @php
+                // --- 1. Siapkan Variabel untuk Link Kalender ---
+
+                // Judul Acara, contoh: "Pernikahan Ahmad & Siti"
+                $calendarText = 'Pernikahan ' . $invitation->groom_nickname . ' & ' . $invitation->bride_nickname;
+
+                // Google Calendar membutuhkan format YYYYMMDD
+                // Untuk acara seharian (all-day event), tanggal akhir adalah H+1 dari tanggal mulai.
+                $eventCarbonDate = \Carbon\Carbon::parse($invitation->event_date);
+                $calendarStartDate = $eventCarbonDate->format('Ymd');
+                $calendarEndDate = $eventCarbonDate->addDay()->format('Ymd');
+                $calendarDates = $calendarStartDate . '/' . $calendarEndDate;
+
+                // Deskripsi Acara
+                $calendarDetails = 'Simpan tanggal untuk hari bahagia kami, ' . $invitation->groom_name . ' dan ' . $invitation->bride_name . '.';
+
+                // Lokasi Acara (Kita akan tambahkan ini di controller nanti)
+                $calendarLocation = isset($invitation->event_location) ? $invitation->event_location : 'Lokasi akan diumumkan';
+
+                // Gabungkan semua menjadi satu URL yang valid
+                $googleCalendarUrl = "https://www.google.com/calendar/render?action=TEMPLATE&text=" . urlencode($calendarText) . "&dates=" . $calendarDates . "&details=" . urlencode($calendarDetails) . "&location=" . urlencode($calendarLocation);
+            @endphp
+
             <div class="savedate mt-8">
                 <p class="font-elsie-s text-[#EEC373] text-[20px] font-[300]" data-aos="zoom-in-up">
                     {{ \Carbon\Carbon::parse($invitation->event_date)->translatedFormat('F, j') }}<sup>{{ \Carbon\Carbon::parse($invitation->event_date)->format('S') }}</sup>
                     {{ \Carbon\Carbon::parse($invitation->event_date)->format('Y') }}
                 </p>
-                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text={$text}&dates={$start}/{$end}&details={$details}&location="
-                    . urlencode($location) . "&sf=true&output=xml" target="_blank"
+
+                {{-- Gunakan variabel $googleCalendarUrl yang sudah kita buat di atas --}}
+                <a href="{{ $googleCalendarUrl }}" target="_blank"
                     class="bg-[#EEC373] hover:bg-[#B78C3C] py-2 px-4 rounded-3xl flex flex-row justify-center items-center cursor-pointer transition-colors duration-300 mt-4"
                     data-aos="zoom-in-up">
                     <i class="fas fa-calendar-alt me-2"></i>
@@ -81,7 +105,6 @@
                     </span>
                 </a>
             </div>
-
         </div>
     </div>
     <div id="event-date" data-event-date="{{ $invitation->event_date }}"></div>
