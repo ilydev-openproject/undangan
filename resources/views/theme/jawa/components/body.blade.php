@@ -209,7 +209,7 @@
     </div>
 
 
-    <div class="gunungankembar relative w-fit h-fit" data-aos="zoom-out">
+    <div class="gunungankembar relative w-fit h-fit z-10" data-aos="zoom-out">
         <img src="{{ asset('image/gunungankembar.png') }}" class="w-full relative -top-12 left-0.5 -translate-x-0.5"
             alt="">
     </div>
