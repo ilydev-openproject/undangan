@@ -126,7 +126,7 @@
             $events = $events->isEmpty() ? $defaultEvents : $events;
         @endphp
 
-        <div class="card-group mt-8" data-aos="zoom-in-up">
+        <div class="card-group mt-8 relative z20" data-aos="zoom-in-up">
             @foreach ($events as $index => $e)
                 <div class="card bg-[#252525] p-2 mx-2 mb-8 rounded-2xl"
                     data-aos="{{ $index % 2 == 0 ? 'fade-right' : 'fade-left' }}">
