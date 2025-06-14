@@ -52,10 +52,16 @@ class GuestResource extends Resource
                 TextInput::make('wa')
                     ->label('Nomor Whatsapp')
                     ->placeholder('+628xxxxxxxxxx')
-                    // Add this line to remove spaces and hyphens before saving
+                    // This makes the field update visually when the user types or blurs
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (?string $state, Set $set) {
+                        // Remove spaces and hyphens from the state for visual update
+                        $cleanedState = str_replace([' ', '-'], '', $state);
+                        $set('wa', $cleanedState);
+                    })
+                    // This ensures the value saved to the database is always clean
                     ->dehydrateStateUsing(fn(?string $state): ?string => str_replace([' ', '-'], '', $state))
-                    // Add this to update the field visually when user blurs it
-                    ->live(onBlur: true),
+                    ->required(),
                 Select::make('role')
                     ->label('Role Tamu')
                     ->options([
@@ -65,6 +71,7 @@ class GuestResource extends Resource
                         'groom_family_guest' => 'Tamu Keluarga Pria',
                     ])
                     ->native(false)
+                    ->required()
             ]);
     }
 
