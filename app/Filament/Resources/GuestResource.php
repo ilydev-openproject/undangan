@@ -51,7 +51,11 @@ class GuestResource extends Resource
                     ]),
                 TextInput::make('wa')
                     ->label('Nomor Whatsapp')
-                    ->placeholder('+628xxxxxxxxxx'),
+                    ->placeholder('+628xxxxxxxxxx')
+                    // Add this line to remove spaces and hyphens before saving
+                    ->dehydrateStateUsing(fn(?string $state): ?string => str_replace([' ', '-'], '', $state))
+                    // Add this to update the field visually when user blurs it
+                    ->live(onBlur: true),
                 Select::make('role')
                     ->label('Role Tamu')
                     ->options([
